@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+    <meta charset = "UTF-8">
+        <title>03. 기본 선택자2</title> 
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+        <h1>기본 선택자2</h1>
+
+        <h3>입력 양식 필터 선택자1</h3>
+        <p>input 태그의 type속성에 따라 문서 내 객체 선택 가능.</p>
+
+        <label>텍스트 상자</label><input type="text"><br>
+        <label>버튼</label><input type="button"><br>
+        <label>체크박스</label><input type="checkbox"><br>
+        <label >파일</label><input type="file"><br>
+        <label for="upload" id="upBtn" >파일2</label>
+        <input type="file" id="upload"><br>
+        
+        <br>
+        <label>이미지</label><input type="image" src="sample/image/flower1.PNG"><br>
+        <br>
+        <label>패스워드</label><input type="password"><br>
+        <label>라디오버튼</label><input type="radio"><br>
+        <label>리셋버튼</label><input type="reset"><br>
+        <label>제출버튼</label><input type="submit"><br>
+
+        <script>
+            $(function(){ // jQuery의 ready() 함수 : 페이지 로딩후 다시한번 실행
+                $("input:text").css("backgroundColor","red"); //input 타입중 text 타입만 선택
+                $("input:button").css("width", "200px").css("height","50px").attr("value","버튼");
+                // 메소드 체인 방식
+                // .css 실행시 이전 css가 적용된 요소가 반환되어 그 요소에 반복적으로
+                // 다음 css를 적용
+                // 자주 사용됨
+
+                $("input:checkbox").prop("checked", true).css({"width" : "50px", "height":"50px"});
+                                        //  자바스크립트 객체 리터럴 표기법
+                                        //  보다 자주 사용
+                                        //  { 키 : 속성, 키 : 속성, ... }
+                                        // 외부로 나가면 json
+                // attr이 호환이 안되면 prop으로 교체하여 사용가능
+                //  "checked" : 체크가 되었는지 여부 확인하는 용도
+                $("input:file").css({"backgroundColor":"red"});
+                // file 의 버튼에는 자체적으로 css 적용불가
+                // 버튼을 hidden으로 적용, label for 로 요소 연결. 
+                // label 선택하면 버튼누른 기능으로 사용가능
+
+                // 파일2 요소 숨김
+                $("#upload").css("display","none");
+
+                // 파일2 label 스타일 지정
+                $("#upBtn").css({"border":"1px solid gray", "display":"block",
+                                    "width":"100px","backgroundColor":"lightblue",
+                                    "text-align":"center"
+                                }).mouseenter(function(){
+                                    $(this).css("cursor","pointer")
+                            });
+                
+                // mouseenter() : 마우스가 요소 경계(테두리) 내부로 들어 왔을 때
+                // //                     이벤트 발생
+                // $("input:image").mouseenter(function(){
+                //     // this : image 요소중 mounseenter가 일어난 요소 
+                //     $(this).attr("src","sample/image/flower2.png");
+                // });
+                // // mouseenter : 요소에 들어왔을때 만 반응,
+                //                     //자식요소에서 마우스가 벗어나도 부모요소에서 반응없음
+                //                     // 표준 
+                //                     // <-> mouseleave
+                // // mouseover : 자식요소에서 마우스가 벗어나도 부모요소에서 반응: 이벤트버블링
+                // // <-> mouseout
+
+                // // mouseleave() : 마우스가 요소 경계(테두리) 외부로 나갔을 때 이벤트 발생
+                // $("input:image").mouseleave(function(){
+                //     $(this).attr("src","sample/image/flower1.png");
+                // });
+
+                // hover() : mouseenter() + mouseleave() 
+                $("input:image").hover(function(){
+                    $(this).attr("src","sample/image/flower2.png");
+                },function(){
+                    $(this).attr("src",'sample/image/flower1.png');
+                });
+
+                $("input:password").css("backgroundColor","pink");
+    
+                $("input:radio").prop("checked",true);
+
+                $("input:reset").css({"backgroundColor":"red","color":"white"}).val("Reset");
+
+                $("input:submit").css({"width":"200px","height":"150px"})
+                .hover(function(){
+                    $(this).css({"backgroundColor":"blue","cursor":"pointer","color":"white"});
+                }, function(){
+                    $(this).css("backgroundColor","red");
+                }).val("CustomSubmit");
+            });
+
+        </script>
+
+    </body>
+ </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>13_이벤트2</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<style>
+		.outer {
+			width: 200px;
+			height: 200px;
+			background: orange;
+			padding: 50px;
+
+		}
+
+		.inner {
+			width: 100%;
+			height: 100%;
+			background: red;
+
+		}
+	</style>
+	<title>이벤트2</title>
+</head>
+<body>
+	<h1>이벤트 연결 메소드</h1>
+	<h3>
+		mouseenter/mouseleave <br>
+		mouseover/mouseout
+	</h3>
+	<h4>mouseover-mouseout : 자식 요소에 접근 시에도 이벤트 핸들링함.<br></h4>
+	<div class="outer o1">
+		<div class="inner"></div>
+	</div>
+	<p id="output"></p>
+
+	<hr>
+	<h4>mouseenter-mouseleave : 자식 요소에 접근 시에는 이벤트 핸들링을 하지 않음. </h4>
+	<div class="outer o2">
+		<div class="inner"></div>
+	</div>
+	<p id="output2"></p>
+
+	<script>
+		$(document).ready(function () {
+			//mouseover(), mouseout()
+			//자식 요소에 접근 시에도 이벤트 발생
+
+			//mouseover() : 마우스가 요소에 있을 경우
+			$(".o1").mouseover(function () {
+				document.getElementById("output").innerHTML += "OVER! ";
+			});
+
+			//mouseout() : 마우스가 요소 child에서 나갈 떄
+			$(".o1").mouseout(function () {
+				document.getElementById("output").innerHTML += "OUT! ";
+			});
+
+
+			//mouseenter(), mouseleave()
+			//자식 요소에 접근 시에는 이벤트가 발생하지 않음
+
+			//mouseenter() : 마우스가 요소에 들어올 때
+			$(".o2").mouseenter(function () {
+				document.getElementById("output2").innerHTML += "ENTER! ";
+			});
+
+			//mouseleave() : 마우스가 요소에서 나갈 때
+			$(".o2").mouseleave(function () {
+				document.getElementById("output2").innerHTML += "LEAVE! ";
+			});
+		});
+	</script>
+
+	<hr>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meata charset="UTF-8">
+        <title>연습문제 1</title>
+        <style>
+            #readInput{
+                border:1px solid black;
+                height: 150px;
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>연습문제 1</h3>
+        <div id="input">
+            <form>
+                <label for="name">구매자 : </label>
+                <input type="text" class="inputValue" id="name" name="name" placeholder="구매자명 입력">
+                <br><br>
+                <label for="name">상품명 : </label>
+                <input type="text" class="inputValue" id="product" name="product"  placeholder="상품명 입력">
+                <br><br>
+                <br><br>
+                <label for="name">가격 : </label>
+                <input type="text" class="inputValue" id="price" name="price"  placeholder="가격 입력">
+                <br><br>만원
+                <br><br>
+            </form>
+
+            <button onclick="readInput();">입력값 출력하기</button>
+            
+            <div id="readInput" name="readInput">
+            <script>
+            function readInput(){
+                var name = document.getElementById("name").value;
+                var product = document.getElementById("product").value;
+                var price = document.getElementById("price").value;
+
+                var readInput = document.getElementById("readInput");
+                readInput.innerHTML += "구입자" +name + "님" + "<br>";
+                readInput.innerHTML += "구입상품 : " + product + "<br>";
+                readInput.innerHTML += "구매가격 : " + price + "만원" +  "<br>";
+
+                /*태그명
+                var inputList = document.getElementsByTagName("input");
+                name = listInput[0].value;
+                product = listInput[1].value;
+                price = listInput[2].value;*/
+
+            }
+            </script>
+            </div>  
+            
+        </div>
+
+        
+    </body>
+</html>

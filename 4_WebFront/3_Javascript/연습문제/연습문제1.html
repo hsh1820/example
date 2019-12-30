@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+    <meta charset = "UTF-8">
+        <title></title> 
+        <style>
+            div{ width:300px;  
+                        height:100px; 
+                        resize:none;
+                        border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>연습문제 1</h2>
+            <p><label>구매자 : </label><input type="text" class="prod" name="userName" id="userName"></p>
+            <p><label>상품명 : </label><input type="text" class="prod" name="product" id="product"></p>
+            <p><label>가격 : </label><input type="text" class="prod" name="price" id="price"> 만원</p>
+            <button onclick="readValue();">입력값 확인</button><br><br>
+            <div id="area1" ></div>
+                <script>
+
+                       function readValue() {
+                        // 클래스로 가져오기
+                        var inputlist = document.getElementsByClassName("prod");
+                        var input = inputlist[0];
+                        var input1 = inputlist[1];
+                        var input2 = inputlist[2];
+                        // getElementBy.. () == 클래스, id, name 이 포함되어 있는 
+                        // 요소 전체를 가져오는 것 이기때문에 값에 접근하려면 .value 가 필요
+
+                        // id로 가져오기
+                        // var input = document.getElementById("userName");
+                        // var input1 = document.getElementById("product");
+                        // var input2 = document.getElementById("price");
+
+                        if(input.value == "" || input.value.length == 0){
+                            window.alert("이름을 입력하세요");
+                            input.focus();
+                        }else if(input1.value == "" || input1.value.length == 0){
+                            window.alert("상품명을 입력하세요");
+                            input1.focus();
+                        }else if(input2.value == "" || input2.value.length == 0){
+                            window.alert("가격을 입력하세요");
+                            input2.focus();
+                        }
+                        else {
+                            document.getElementById("area1").innerHTML 
+                            = "구입자 : "+input.value+"<br>"+"구매상품 : "+input1.value+"<br>"+
+                            "상품가격 : "+input2.value ;
+                        }
+                    }
+                </script>
+    </body>
+ </html>

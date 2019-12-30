@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+    <meta charset = "UTF-8">
+        <title>3. 웹문서 구조2</title> 
+        <style>
+            div {
+                border: 1px solid red;
+                box-sizing: border-box;
+            }
+
+            #wrapper {
+                width: 800px;
+                height: 600px;
+            }
+
+            #wrapper * {
+                width: 100%;
+            }
+
+            #header {
+                height: 22.5%;
+            }
+
+            .header-float {
+                float: left;
+            }
+
+            #header * {
+                float: left;
+                height: 100%;
+            }
+            #navigator {
+                height : 5%;
+            }
+            #footer {
+                height: 22.5%;
+            }
+ 
+            #content {
+                height : 50%;
+            } 
+
+            #header-1{
+                width: 20%;
+            }
+            #header-2{
+                width: 65%;
+            }
+            #header-3{
+                width: 15%;
+            }
+
+            #content * {
+                height: 100%;
+                float: left;
+            }            
+         
+            #content-1 {
+                width: 15%;
+            }
+            #content-2 {
+                width: 65%;
+            }
+            #content-3 {
+                width: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="header-1" class="header-float"></div>
+                <div id="header-2"></div>
+                <div id="header-3"></div>
+            </div>
+            <div id="navigator"></div>
+            <div id="content">
+                <div id="content-1"></div>
+                <div id="content-2"></div>
+                <div id="content-3">
+                </div>
+            </div>
+            <div id="footer"></div>
+        </div>
+    </body>
+ </html>

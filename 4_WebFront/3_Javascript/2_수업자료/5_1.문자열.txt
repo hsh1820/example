@@ -1,0 +1,37 @@
+<button onclick="showStringMethod();">문자열 처리 메소드</button>
+	<div id="el1" class="area"></div>
+	<script type="text/javascript">
+	
+		function showStringMethod() {
+			var str1 = "Hello World";
+
+			var el1 = document.getElementById("el1");
+
+			el1.innerHTML = ""; // area1의 기존 내용 삭제
+			el1.innerHTML += "toUpperCase() : " + str1.toUpperCase() + "<br>";
+			el1.innerHTML += "toLowerCase() : " + str1.toLowerCase() + "<br>";
+
+			el1.innerHTML += "length : " + str1.length + "<br>";
+
+			
+			el1.innerHTML += "앞에서 부터 첫 l의 위치 : " + (str1.indexOf("l") + 1) + "번째에 위치<br>";
+			
+			el1.innerHTML += "뒤에서 부터 첫 l의 위치 : " + (str1.lastIndexOf("l") + 1) + "번째에 위치<br>"
+			
+			for(var i = 0; i < str1.length; i++){
+				el1.innerHTML += i + "번째 인덱스 : " + str1.charAt(i) + "<br>";
+			}
+			
+			el1.innerHTML += "문자열 일부만 리턴 : " + str1.substring(6, str1.length) + "<br>";
+
+			
+			var str2 = "사과, 바나나, 복숭아, 키위, 파인애플";
+			
+			var fruits = str2.split(", ");
+			
+			el1.innerHTML += "str2.split()한 배열 : " + fruits + "<br>";
+			console.log(fruits);
+			
+			
+		}
+	</script>

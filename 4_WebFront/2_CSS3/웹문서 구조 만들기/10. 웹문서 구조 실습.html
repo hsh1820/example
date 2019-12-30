@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>10. 웹문서 구조만들기 실습</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="header-1" class="header-float">
+                <a href="10. 웹문서 구조 실습.html">
+                    <img src="웹문서 구조 만들기 실습/img/logo.jpg" id="home-logo">
+                </a>
+            </div>
+            <div id="header-2">
+                <form id="search-form" name="search-form" method="GET">
+                    <div class="header-mainlogo">
+                        <img src="웹문서 구조 만들기 실습/img/mainlogo.jpg">
+                    </div>
+                </form>
+            </div>
+            <div id="header-3"></div>
+        </div>
+        <div id="navigator">
+            <ul id="navi">
+                <!-- 메인메뉴 -->
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">Profile</a>
+                    <ul>
+                        <li><a href="#">HTML5</a></li>
+                        <li><a href="#">CSS3</a></li>
+                        <li><a href="#">Javascript</a></li>
+                        <li><a href="#">JQuery</a></li>
+                        <li><a href="#">Ajax</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Board</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                        <li><a href="#">질문게시판</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="content-1">
+                <div class="content-1-side">
+                    <img src="웹문서 구조 만들기 실습/img/left_img.jpg">
+                </div>
+            </div>
+            <div id="content-2">
+                <div id="content-2-img">
+                    <div id="img-1">
+                        <div id="img-1-img">
+                        <a href="#">
+                            <img src="웹문서 구조 만들기 실습/img/main_img1.jpg">                            
+                        </a>
+                        </div>
+                        <div id="img-1-text">
+                            나무를 심는 사람들
+                        </div>
+                    </div>
+
+                    <div id="img-1">
+                        <div id="img-1-img">
+                        <a href="#">
+                            <img src="웹문서 구조 만들기 실습/img/main_img2.jpg">                            
+                        </a>
+                        </div>
+                        <div id="img-1-text">
+                            아이들에게 녹색미래를..
+                        </div>
+                    </div>
+                    <div id="img-1">
+                        <div id="img-1-img">
+                        <a href="#">
+                            <img src="웹문서 구조 만들기 실습/img/main_img3.jpg">                            
+                        </a>
+                        </div>
+                        <div id="img-1-text">
+                            설악산을 살리는 길
+                        </div>
+                    </div>
+                    <div id="img-1">
+                        <div id="img-1-img">
+                        <a href="#">
+                            <img src="웹문서 구조 만들기 실습/img/main_img4.jpg">                            
+                        </a>
+                        </div>
+                        <div id="img-1-text">
+                            사라지는 북극곰들
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content-3">
+                <div id="content-login">
+                    <!-- 입력을 받는 input 태그가 위치할 form -->
+                    <form id="login-form" name="login-form" method="GET">
+
+
+                        <!-- ID / PWD input 태그가 위치할 div -->
+                        <div id="login-input-id-pwd">
+
+                            <!-- ID input 태그가 위치할 div -->
+                            <div id="login-input-id">
+                                <input type="text" id="input-id" name="input-id" placeholder="ID를 입력해주세요.">
+                            </div>
+
+                            <!-- PWD input 태그가 위치할 div -->
+                            <div id="login-input-pwd">
+                                <input type="password" id="input-pwd" name="input-pwd" placeholder="PWD를 입력해주세요.">
+                            </div>
+                        </div>
+
+                        <!-- 로그인 버튼이 위치할 div -->
+                        <div id="login-input-btn">
+                            <button id="login-btn">로그인</button>
+                        </div>
+                    </form>
+                    <!-- 회원가입, ID/PWD 찾기 a태그가 위치할 div -->
+                    <div id="login-join-find">
+                        <a href="#">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#">ID/PWD 찾기</a>
+                    </div>
+                </div>
+                <div id="content-3-2">
+                    <div id="right_img">
+                        <a href="#">
+                        <img src="웹문서 구조 만들기 실습/img/right_img.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div id="content-3-3">
+                    <div id="me_chat">
+                        <a href="#">
+                            <img src="웹문서 구조 만들기 실습/img/me_chat.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footer-img">
+                <img src="웹문서 구조 만들기 실습/img/footer.JPG">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

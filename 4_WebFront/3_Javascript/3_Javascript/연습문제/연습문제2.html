@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meata charset="UTF-8">
+        <title>연습문제 2</title>
+        <style>
+            #etc{
+                border: 1px solid black;
+                height: 80px;
+                width: 280px;
+            }
+            #readInput{
+                border: 1px solid black;
+                height: 200px;
+                width:  500px;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>연습문제 2</h3>
+
+            <form action="#">
+                <fieldset>
+                    <legend>납품정보</legend>
+                    <ul>
+                        <li>
+                            <label for="productName">상품명 : </label>
+                            <input type="text" id="productName" list="productList">
+                            <datalist id="productList">
+                                <option value="kanu">맥심 카누</option>
+                                <option value="lipton">립톤 아이스티</option>
+                                <option value="milk">우유</option>
+                            </datalist>
+                        </li>
+                        
+                        <li>
+                            <label for="productAmount">납품수량 : 
+                                <input type="number" id="productAmount" name="productAmount" min="0" max="100" value="0" step="10">
+                                <p>(최소 수량 : 10, 최대 수량 : 100, 10개 단위)</p>
+                            </label>
+                        </li>
+                        
+                        <li>
+                            <label for="productLevel">납품등급(1~5등급) </label><br>
+                            <input type="range" id="productLevel" min="1" max="5" step="1"
+                            oninput="changeRange(this.value);">
+                            <input type="text" id="rangeValue" size="3" readonly>
+                        </li>
+                        
+                        <li>
+                            <label for="textEtc">기타사항</label>
+                            <div id="textEtc">
+                                <input id="etc" type="text">
+                            </div>
+                            <!-- <textarea id="etc" rows="3" cols="30" 
+                            style="resize: none;"
+                            ></textarea>-->
+                            
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+            <br>
+            <button onclick="printProduct();">send message</button>
+            <br><br>
+            <div id="readInput" name="readInput">
+            <script>
+                function printProduct(){
+                    var productName = document.getElementById("productName").value;
+                    var productAmount = document.getElementById("productAmount").value;
+                    var productLevel = document.getElementById("productLevel").value;
+                    var etc = document.getElementById("etc").value;
+                    
+                    var readInput = document.getElementById("readInput");
+
+                    readInput.innerHTML = "상품명 : " + productName + "<br>";
+                    readInput.innerHTML += "납품수량 : " + productAmount + "개 <br>" ;
+                    readInput.innerHTML += "납품등급 : " + productLevel + "등급 <br>" ;
+                    readInput.innerHTML += "기타사항 : " + etc ;
+                }
+
+                function changeRange(val){
+                    document.getElementById("rangeValue").value
+                        = val + "등급";
+                }
+            </script>
+            </div>
+    </body>
+</html>

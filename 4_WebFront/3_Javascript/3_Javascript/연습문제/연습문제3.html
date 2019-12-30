@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meata charset="UTF-8">
+        <title>연습문제 3 </title>
+        <style>
+            fieldset{
+                width: 400px;
+                text-align: center;
+                background-color: darkgray;
+            }
+
+            div.box{
+                width: 500px;
+                height: 50px;
+                margin: 10px;
+                padding: 10px;
+                background-color: darkseagreen;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>연습문제 3</h2>
+
+        <fieldset>
+            <legend>검색할 항목을 선택하세요.</legend>
+            <input type="radio" id="title" name="category" value="title"
+                    onclick="showDiv(this)">
+            <label for="title">제목</label>&nbsp;&nbsp;
+
+            <input type="radio" id="date" name="category" value="date"
+                    onclick="showDiv(this)">
+            <label for="date">날짜</label>&nbsp;&nbsp;
+
+            <input type="radio" id="writer" name="category" value="writer"
+            onclick="showDiv(this)">
+            <label for="writer">작성자</label>&nbsp;&nbsp;
+
+        </fieldset>
+        <hr>
+
+        <div id="titleBox" class="box">
+            <label for="inputTitle">검색할 제목을 입력하세요 : </label>
+            <br>
+            <input type="text" id="inputTitle">
+            <button>검색</button>
+        </div>
+
+
+        <div id="dateBox" class="box">
+            <label for="inputDate">검색할 날자를 선택하세요 : </label>
+            <br>
+            <input type="date" id="inputDate1"> - <input type="date" id="inputDate2">
+            <button>검색</button>
+        </div>
+
+        <div id="writerBox" class="box">
+            <label for="inputTitle">검색할 작성자 아이디를 입력하세요 : </label>
+            <br>
+            <input type="text" id="inputWriter">
+            <button>검색</button>
+        </div>
+
+        <script>
+            function showDiv2(element){
+                if(element.checked == true && element.value =="title"){ // title이 체크된 경우
+                    document.getElementById("titleBox").style.display = "block";
+                    document.getElementById("dateBox").style.display = "none";
+                    document.getElementById("writerBox").style.display = "none";
+                }
+           else if(element.checked == true && element.value =="date"){ // title이 체크된 경우
+                    document.getElementById("dateBox").style.display = "block";
+                    document.getElementById("titleBox").style.display = "none";
+                    document.getElementById("writerBox").style.display = "none";
+                }
+            else if(element.checked == true && element.value =="writer"){ // title이 체크된 경우
+                    document.getElementById("writerBox").style.display = "block";
+                    document.getElementById("dateBox").style.display = "none";
+                    document.getElementById("titleBox").style.display = "none";
+                }
+            }
+
+            function showDiv(element){
+                var box = document.getElementsByClassName("box");
+
+                for(var i=0 ; i<box.length ; i++){
+
+                    if(element.checked && element.id+"Box" == box[i].id){
+                        box[i].style.display = "block";
+                    }else{
+                        box[i].style.display = "none";
+                    }
+
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

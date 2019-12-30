@@ -1,0 +1,22 @@
+	<button onclick="showMathMethod();">숫자 처리 메소드</button>
+	<div id="area2" class="area"></div>
+	<script type="text/javascript">
+		function showMathMethod(){
+			var num1 = -123;
+			
+			var area2 = document.getElementById("area2");
+			
+			area2.innerHTML = ""; //기존 내용 삭제
+
+			area2.innerHTML += "절대값 : " + Math.abs(num1) + "<br>";
+			
+			area2.innerHTML += "임의의 난수 발생 : " + Math.random() + "<br>";
+			
+			area2.innerHTML += "반올림 : " + Math.round(123.456 * 100) / 100 + "<br>";
+			area2.innerHTML += "내림 : " + Math.floor(123.456 * 100) / 100 + "<br>";
+			area2.innerHTML += "올림 : " + Math.ceil(123.456) + "<br>";
+			
+			area2.innerHTML += "Infinity : " + 1/0 + "<br>";
+			area2.innerHTML += "NaN : " + Math.abs("asd") + "<br>";
+		}
+	</script>
