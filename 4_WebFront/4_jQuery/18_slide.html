@@ -4,8 +4,65 @@
     <meta charset = "UTF-8">
         <title>display 속성 메소드</title> 
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <style>
+            div {
+                width: 300px;
+                height: 30px;
+                background-color:cadetblue;
+                color: white;
+                border-radius: 10px;
+                text-align: center;
+                line-height: 30px;
+                border: 1px solid gray;
+                cursor : pointer;
+            }
+
+            p.contents {
+                border: 1px solid gray;
+                width: 300px;
+                height: 200px;
+                display: none;
+            }
+
+
+        </style>
     </head>
     <body>
+        <h1>slide() 메소드</h1>
+        
+        <h3>slideUp(), slideDown()</h3>
 
+        <div>첫 번째 메뉴</div>
+        <p class="contents">1</p>
+        <div>두 번째 메뉴</div>
+        <p class="contents">2</p>
+        <div>세 번째 메뉴</div>
+        <p class="contents">3</p>
+        <div>네 번째 메뉴</div>
+        <p class="contents">4</p>
+        <div>다섯 번째 메뉴</div>
+        <p class="contents">5</p>
+
+        <script>
+            
+            $("div").click(function(){
+                
+                // 메뉴(div)를 클릭했을 때
+                // 내용(p)이 display = none 인 경우 
+                if($(this).next("p").css("display") == "none"){
+                    
+                    // 선택한 메뉴의 형제 요소 중 p.contents를 숨김
+                    $(this).siblings("p.contents").slideUp(100);
+                    
+                    // 메뉴 다음 요소(p, 내용)을 보이게 함
+                    $(this).next().slideDown(100);
+                    // slideDown()은 수행완료후 동기적으로 다음 라인 실행
+                }else{
+                    // 메뉴가 열려있는 경우
+                    $(this).next("p").slideUp(100);
+                }
+            });
+
+        </script>
     </body>
  </html>
