@@ -1,5 +1,5 @@
 div {
-    /* border: 1px solid red; */
+    border: 1px solid red;
     box-sizing: border-box;
 }
 
@@ -305,7 +305,7 @@ div {
     /* navi 후손 중 li 태그의 자손(서브메뉴) 스타일 지정*/
     
     /* 서브메뉴가 content 위에 표시될 수 있도록 position 지정 */
-    position: absolute;
+    /* position: absolute; */
 
     /* 서브메뉴의 크기를 메인메뉴와 동일하게 지정 */
     width: 100%;
