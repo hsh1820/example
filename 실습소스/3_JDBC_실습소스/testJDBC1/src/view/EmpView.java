@@ -8,32 +8,32 @@ import model.vo.EMP;
 
 public class EmpView {
 	
-	// View ÀüÃ¼¿¡¼­ °ø¿ëÀ¸·Î »ç¿ëµÉ Scanner °´Ã¼ »ý¼º
+	// View ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Scanner ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 	private Scanner sc = new Scanner(System.in);
 	
-	// ¸ÞÀÎ ¸Þ´º
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½
 	public void mainMenu() {
 		
-		// Å¬¶óÀÌ¾ðÆ® ¿äÃ»À» DAO¿¡ ¾Ë¸ÂÀº ¸Þ¼Òµå·Î Àü´ÞÇÏ°í
-		// DB Ã³¸® °á°ú¸¦ ¹ÝÈ¯¹Þ´Â ¿ªÇÒÀ» ÇÒ controller °´Ã¼ »ý¼º
+		// Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½Ã»ï¿½ï¿½ DAOï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+		// DB Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ controller ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		EmpController controller = new EmpController();
 		
-		int select = 0; // ¸Þ´º ¼±ÅÃÀ» À§ÇÑ º¯¼ö
+		int select = 0; // ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		do {
 			System.out.println("========================================");
 			System.out.println("[Main Menu]");
-			System.out.println("1. ÀüÃ¼ »ç¿ø Á¤º¸ Á¶È¸");
-			System.out.println("2. »ç¹øÀ¸·Î »ç¿ø Á¤º¸ Á¶È¸");
-			System.out.println("3. »õ·Î¿î »ç¿ø Á¤º¸ Ãß°¡");
-			System.out.println("4. »ç¹øÀ¸·Î »ç¿ø Á¤º¸ ¼öÁ¤");
-			System.out.println("5. »ç¹øÀ¸·Î »ç¿ø Á¤º¸ »èÁ¦");
-			System.out.println("0. ÇÁ·Î±×·¥ Á¾·á");
+			System.out.println("1. í•œê¸€");
+			System.out.println("2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸");
+			System.out.println("3. ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½");
+			System.out.println("4. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("5. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("0. ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("========================================");
 			
-			System.out.print("¸Þ´º ¼±ÅÃ >> ");
+			System.out.print("ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ >> ");
 			select = sc.nextInt();
-			sc.nextLine(); // ½ºÄ³³Ê ¹öÆÛ¿¡ ³²¾ÆÀÖ´Â °³Çà¹®ÀÚ Á¦°Å 
+			sc.nextLine(); // ï¿½ï¿½Ä³ï¿½ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½à¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 			
 			
 			switch(select) {
@@ -42,8 +42,8 @@ public class EmpView {
 			case 3 : break;
 			case 4 : break;
 			case 5 : break;
-			case 0 : System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù."); break;
-			default : System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			case 0 : System.out.println("ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½."); break;
+			default : System.out.println("ï¿½ß¸ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 			}
 			System.out.println();
 		}while(select != 0) ;
@@ -51,43 +51,43 @@ public class EmpView {
 	//------------------------------------------------------------------------------------
 	// sub menu
 	
-	// 1_15. ÀüÃ¼ »ç¿ø Á¤º¸ Ãâ·Â¿ë View
+	// 1_15. ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¿ï¿½ View
 	public void selectAll(ArrayList<EMP> empList) {
-		System.out.println("»ç¹ø \t ÀÌ¸§ \t Á÷Ã¥ \t Á÷¼Ó»ó»ç \t "
-	+ "°í¿ëÀÏ \t ±Þ¿© \t Ä¿¹Ì¼Ç \t ºÎ¼­¹øÈ£ ");
+		System.out.println("ï¿½ï¿½ï¿½ \t ï¿½Ì¸ï¿½ \t ï¿½ï¿½Ã¥ \t ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ \t "
+	+ "ï¿½ï¿½ï¿½ï¿½ï¿½ \t ï¿½Þ¿ï¿½ \t Ä¿ï¿½Ì¼ï¿½ \t ï¿½Î¼ï¿½ï¿½ï¿½È£ ");
 		
-		// Çâ»óµÈ for¹®À¸·Î empList Ãâ·Â
+		// ï¿½ï¿½ï¿½ï¿½ forï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ empList ï¿½ï¿½ï¿½
 		for( EMP emp : empList) {
 			System.out.print(emp+"\n");
 		}
 	}
-	// 1_18. Error ¸Þ¼¼Áö Ãâ·Â¿ë View
+	// 1_18. Error ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½Â¿ï¿½ View
 	public void displayError(String msg) {
-		System.out.println("¼­ºñ½º ¿äÃ» ½ÇÆÐ : " + msg);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ : " + msg);
 		
 	}
 	
-	// 2_3. »ç¹ø ÀÔ·Â¿ë View(2,4,5 ¸Þ´º¿¡ ÇÊ¿äÇÔ)
-	// »ç¹ø ÀÔ·ÂÀº ¹Ýº¹µÇ´Â µ¿ÀÛÀ¸·Î
-	// º°µµÀÇ ¸Þ¼Òµå·Î Ãß»óÈ­ ÇÏ¿© »ç¿ë -> ÄÚµå±æÀÌ °¨¼Ò, Àç»ç¿ë¼º Áõ°¡
+	// 2_3. ï¿½ï¿½ï¿½ ï¿½Ô·Â¿ï¿½ View(2,4,5 ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½)
+	// ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ï¿½ ï¿½ß»ï¿½È­ ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ -> ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ë¼º ï¿½ï¿½ï¿½ï¿½
 	public int selectEmpNo() {
-		System.out.print("»ç¹øÀ» ÀÔ·ÂÇÏ¼¼¿ä : ");
+		System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ : ");
 		int empNo = sc.nextInt();
 		sc.nextLine();
 		
 		return empNo;
 	}
 	
-	//2_16. »ç¿ø ÇÑ ¸íÀÇ Á¤º¸¸¦ Ãâ·ÂÇÏ´Â View
+	//2_16. ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ View
 	public void selectEMP(EMP emp) {
-		System.out.println("»ç¹ø : "+ emp.getEmpNo());
-		System.out.println("ÀÌ¸§ : "+ emp.geteName());
-		System.out.println("Á÷Ã¥ : "+ emp.getJob());
-		System.out.println("Á÷¼Ó»ó»ç : "+ emp.getMgr());
-		System.out.println("°í¿ëÀÏ : "+ emp.getHireDate());
-		System.out.println("±Þ¿© : "+ emp.getSal());
-		System.out.println("Ä¿¹Ì¼Ç : "+ emp.getComm());
-		System.out.println("ºÎ¼­¹øÈ£ : "+ emp.getDepNo());
+		System.out.println("ï¿½ï¿½ï¿½ : "+ emp.getEmpNo());
+		System.out.println("ï¿½Ì¸ï¿½ : "+ emp.geteName());
+		System.out.println("ï¿½ï¿½Ã¥ : "+ emp.getJob());
+		System.out.println("ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ : "+ emp.getMgr());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ : "+ emp.getHireDate());
+		System.out.println("ï¿½Þ¿ï¿½ : "+ emp.getSal());
+		System.out.println("Ä¿ï¿½Ì¼ï¿½ : "+ emp.getComm());
+		System.out.println("ï¿½Î¼ï¿½ï¿½ï¿½È£ : "+ emp.getDepNo());
 		
 		
 		
