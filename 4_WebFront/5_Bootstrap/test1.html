@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+  <meta charset = "UTF-8">
+    <title></title> 
+  </head>
+  <body>
+    <script type="text/javascript">
+      function showmap() {
+       if(document.all.spot.style.visibility=="hidden") {
+         document.all.spot.style.visibility="visible";
+         return false;
+       }
+       if(document.all.spot.style.visibility=="visible") {
+        document.all.spot.style.visibility="hidden";
+        return false;
+       }
+      }
+      </script>
+      
+      
+      <!-- a태그에 링크걸기 -->
+      <a href="#" onclick="showmap(spot);" title=""><img src="../4_jQuery/sample/image/75305430_170754397327985_3324721758300814602_n.jpg" alt="" /></a>
+      
+      
+      <!-- 레이어팝업 -->
+      <div id="spot" style="position:absolute; left:520px; top:500px; visibility:hidden;">
+      <img src="../4_jQuery/sample/image/city1.PNG" alt="" />
+      </div>
+  </body>
+ </html>

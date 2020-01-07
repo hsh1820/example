@@ -48,6 +48,6 @@ public class BoardDAO {
 			close(rset);
 			close(pstmt);
 		}
-		return null;
+		return member;
 	}
 }
