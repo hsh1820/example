@@ -2,12 +2,21 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>1_Servlet</display-name>
   <welcome-file-list>
-	<!-- 웹 애플리케이션 요청 시 자동으로 보여줄 파일 지정 
-		ex) 네이버 메인페이지 접속 원래 방법
-			www.naver.com/index.html
-			-> welcome-file 지정 시 
-				www.naver.com 만 입력해도 접속 가능
-	-->
     <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
+  </welcome-file-list>  
+  
+  <!-- TestServlet1 -->
+  <servlet>
+  	<!-- 서블릿 등록 작업 -->
+  	<servlet-name>TestServlet1</servlet-name>
+  	<servlet-class>com.kh.servlet.TestServlet1</servlet-class>
+  </servlet>  
+  	
+  	<!-- 해당 서블릿의 동작 설정 -->
+  	<servlet-mapping>
+  		<!-- 어떤 주소로 들어오면 어떤 서블릿을 실행할 것인지 설정 -->
+  		<servlet-name>TestServlet1</servlet-name>
+  		<url-pattern>/testServlet1.do</url-pattern>
+  	</servlet-mapping>
+  	
 </web-app>
