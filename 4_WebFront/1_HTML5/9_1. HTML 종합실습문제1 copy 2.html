@@ -1,74 +1,42 @@
 <!DOCTYPE html>
-<html lang = "ko">
-    <head>
-    <meta charset = "UTF-8">
-        <title> 9_1. HTML 종합실습문제 1</title> 
-    </head>
-    <body>
-        <form>
-            <p>
-            <label for="userName">고객명 :</label>
-                <input type="text" id="userName">
-            </p>
-            <p>
-            <label for="userPhone">전화번호(필수) : </label>
-                <input type="text" id="userPhone" required>
-            </p>
-            <p>
-            <label for="userEmail">E-mail : </label>
-                <input type="text" id="userEmail">
-            </p>
-            <p>
-            <label for="pizza">피자선택(필수) : </label>
-                <select id="pizza" required>
-                    <option selected>피자를 선택하세요</option>
-                </select>   
-            </p>
-            <fieldset>
-                <legend>피자 사이즈(필수)</legend>
-                <p>
-                    <input type="radio" value="S" id="pizzaSmall" name="pizzaSel" >
-                    <label for="pizzaSel">Small</label>
-                </p>
-                <p>
-                    <input type="radio" value="M" id="pizzaMedium" name="pizzaSel">
-                    <label for="pizzaMedium">Medium</label>
-                </p>
-                <p>
-                    <input type="radio" value="L" id="pizzaLarge" name="pizzaSel">
-                    <label for="pizzaLarge">Large</label>
-                </p>
-            </fieldset>
-            
-            <fieldset>
-                <legend>토핑 선택</legend>
-                <p>
-                    <input type="checkbox" value="베이컨" id="베이컨" name="토핑" >
-                    <label for="베이컨">베이컨</label>
-                </p>
-                <p>
-                    <input type="checkbox" value="치즈" id="치즈" name="토핑" >
-                    <label for="치즈">치즈</label>
-                </p>
-                <p>
-                    <input type="checkbox" value="양파" id="양파" name="토핑" >
-                    <label for="양파">양파</label>
-                </p>
-                <p>
-                    <input type="checkbox" value="버섯" id="버섯" name="토핑" >
-                    <label for="버섯">버섯</label>
-                </p>
-            </fieldset>
-            <p>
-            <label>희망 배송 시간 : </label>
-            <input type="time">
-            </p>
-            <p>
-                <label>배송시 요청사항 : </label>
-                <textarea></textarea>
-            </p>
-            <input type="submit" value="주문하기">
-        </form>
-
-    </body>
- </html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>제목</title>
+</head>
+<body>
+<form method="get">
+<p><label>고객명 : <input type="text" maxlength="10"></p>
+<p><label>전화번호(필수) : <input type="tel" required></p>
+<p><label>E-mail : <input type="email" ></p>
+<p><label>피자선택(필수) : <select name="pizza" required>
+<option value="">피자를 선택하세요</option>
+<option value="bulgogi">불고기피자</option>
+<option value="potato">포테이토피자</option>
+</select></p>
+<fieldset>
+<legend>피자 사이즈(필수)</legend>
+<p><input type="radio" name="size" value="S" id="small" required >
+<label for="small">Small</label></p>
+<p><input type="radio" name="size" value="M" id="medium" >
+<label for="medium">Medium</label></p>
+<p><input type="radio" name="size" value="L" id="large" >
+<label for="large">Large</label></p>
+</fieldset>
+<fieldset>
+<legend>토핑 선택</legend>
+<p><input type="checkbox" name="topping" value="bacon" id="bacon">
+<label for="bacon">베이컨</label></p>
+<p><input type="checkbox" name="topping" value="cheese" id="cheese">
+<label for="cheese">치즈</label></p>
+<p><input type="checkbox" name="topping" value="onion" id="onion">
+<label for="onion">양파</label></p>
+<p><input type="checkbox" name="topping" value="mushroom" id="mushroom">
+<label for="mushroom">버섯</label></p>
+</fieldset>
+<p>희망 배송 시간 : <input type="time"></p>
+<p>배송시 요청사항 :  <textarea cols="30" rows="3" style="resize:none"></textarea></p>
+<p><button>주문하기</button></p>
+</form>
+</body>
+</html>
