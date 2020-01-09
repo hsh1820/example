@@ -97,8 +97,7 @@ public class TestServlet1 extends HttpServlet {
 //		out.println("<meta charset=\"UTF-8\">");
 		out.println("<title>개인 정보 출력 화면</title>");
 		out.println("</head>");
-		out.println("<body>");
-		
+		out.println("<body>");		
 		out.println("<h2>개인 정보 출력 화면(GET)</h2>");
 		out.println("</body>");
 		out.println("</html>");
