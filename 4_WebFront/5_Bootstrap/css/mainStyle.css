@@ -1,27 +1,30 @@
-.nav-size {
-    width: 100%;
+.container-fluid *{
+    border: 1px solid blue; 
+    
 }
-.nav-item-size{
+/* .window-wid {
+    margin-top: 10px;
+    /* padding-left: 10%;
+    padding-right: 10%;\
+} */
+.nav-item-width{
     width: 50%;
-}
-.nav-item-font-align {
     text-align: center;
 }
-.nav-tab-padding {
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 3%;
-}
 
-.tab-content-width{
-    padding-left: 20%;
-    padding-right: 20%;
+.tab-content-back{
+    height: 200px ;
 }
-
-.nav-btn-search-width{
-    padding: 30%;    
-} 
-.nav-tab-content-area{
-    background-color: gray;
+.tab-content-float{
+    position: relative;
+    box-sizing: border-box;
+}
+.col-width {
+    width: 100%;
+}
+.btn-align{
+    background-color: red;    
+}
+.btns {
     width: 100%;
 }
