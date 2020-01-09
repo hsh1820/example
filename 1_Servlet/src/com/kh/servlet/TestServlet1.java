@@ -1,6 +1,8 @@
 package com.kh.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,9 +69,41 @@ public class TestServlet1 extends HttpServlet {
 		System.out.println("입력받은 age : "+ age);
 		System.out.println("입력받은 city : "+ city);
 		System.out.println("입력받은 height : "+ height);
-		for(int i =0; i<food.length;i++) {		
-			System.out.println("입력받은 food : "+ food[i]);
+		if(food != null) {
+			for(int i =0; i<food.length;i++) {		
+				System.out.println("입력받은 food : "+ food[i]);
+			}
+		}else {
+			System.out.println("입력받은 food 가 없음 ");
+			
 		}
+		
+		// 응답(Response) 화면 출력 준비
+		
+		// 응답 페이지에 사용할 문자 인코딩 지정
+//		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		// 문자열(HTML 코드)을 사용자 응답 화면에 출력할 스트림을
+		// HttpServletResponse 객체에서 얻어와
+		// 응답 화면과 해당 Servlet 연결
+		// HttpServletResponse 객체 : 어디로 응답해야한다는 정보가 담겨있음
+		PrintWriter out = response.getWriter();
+		// response 객체에서 출력할 스트림을 out에 저장
+		
+		out.println("<html>");
+		out.println("<head>");
+//		out.println("<meta charset='UTF-8'>");
+//		out.println("<meta charset=\"UTF-8\">");
+		out.println("<title>개인 정보 출력 화면</title>");
+		out.println("</head>");
+		out.println("<body>");
+		
+		out.println("<h2>개인 정보 출력 화면(GET)</h2>");
+		out.println("</body>");
+		out.println("</html>");
+		
+		
 	}
 	
 
@@ -86,6 +120,7 @@ public class TestServlet1 extends HttpServlet {
 	 */
 	public void destroy() {
 		// TODO Auto-generated method stub
+		
 	}
 
 }
