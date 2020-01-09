@@ -64,7 +64,18 @@
                 <div class="col-md-4">
                     <h2>Servlet - 1 (GET)</h2>
                     <p>
+                    	GET 방식은 URL에 변수(데이터)를 포함시켜 요청하는 것으로 
+                    	보안 유지가 불가능하다.	<br>
                     	
+                    	따라서 로그인, 회원가입 등의 경우는 GET방식으로 요청하는 것은 부적합함.	<br>
+                    	
+                    	GET방식은 데이터를 HTTP Header에 포함하여 전송하는데 
+                    	이 경우 보통 Body는 비어있는 상태로 전송이 됨	<br>
+                    	
+                    	Header에는 들어갈 수 있는 데이터의 길이에 제한이 있으며 
+                    	초과되는 경우 데이터가 절단된다.	<br>
+                    	
+                    	Get방식은 캐싱(즐겨찾기, 북마크, 링크공유)가 가능하다.
                     </p>
                     <p>
                         <a class="btn btn-secondary" href="Views/testServlet1.html" role="button">View
@@ -72,13 +83,18 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce
-                        dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                        ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                        magna mollis euismod. Donec sed odio dui.</p>
+                    <h2>Servlet - 2 (POST)</h2>
                     <p>
-                        <a class="btn btn-secondary" href="#" role="button">View
+                    	POST 방식은 URL에 변수(데이터)를 노출하지 않고 요청하는 것으로 보안 유지가 가능하다.	<br>
+                    	
+                    	HTTP Body에 데이터를 포함하여 전송하므로 
+                    	데이터 길이에 제한은 없지만, 대신 최대 요청 받는시간(Time Out)이 존재해 
+                    	페이지 요청에 대해 기다리는 시간이 있음<br>
+                    	
+                    	POST 방식은 URL에 데이터가 노출이 되지 않으므로 캐싱 불가능.<br>
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet2.html" role="button">View
                             details &raquo;</a>
                     </p>
                 </div>

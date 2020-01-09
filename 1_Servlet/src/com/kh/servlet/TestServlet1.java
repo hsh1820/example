@@ -91,18 +91,57 @@ public class TestServlet1 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		// response 객체에서 출력할 스트림을 out에 저장
 		
-		out.println("<html>");
-		out.println("<head>");
-//		out.println("<meta charset='UTF-8'>");
-//		out.println("<meta charset=\"UTF-8\">");
-		out.println("<title>개인 정보 출력 화면</title>");
-		out.println("</head>");
-		out.println("<body>");		
-		out.println("<h2>개인 정보 출력 화면(GET)</h2>");
-		out.println("</body>");
-		out.println("</html>");
+//		out.println("<html>");
+//		out.println("<head>");
+////		out.println("<meta charset='UTF-8'>");
+////		out.println("<meta charset=\"UTF-8\">");
+//		out.println("<title>개인 정보 출력 화면</title>");
+//		out.println("</head>");
+//		out.println("<body>");		
+//		out.println("<h2>개인 정보 출력 화면(GET)</h2>");
+//		out.println("</body>");
+//		out.println("</html>");
+		
+		out.println("<!DOCTYPE html>\r\n" + 
+				"<html lang = \"ko\">\r\n" + 
+				"    <head>\r\n" + 
+				"    <meta charset = \"UTF-8\">\r\n" + 
+				"        <title>개인 정보 출력 화면</title> \r\n" + 
+				"        <style>\r\n" + 
+				"            h2{color: red;}\r\n" + 
+				"            span.name{color:orange; font-weight: bold; }\r\n" + 
+				"            span.gender{color:yellow; font-weight: bold; background-color: black;}\r\n" + 
+				"            span.age{color:green; font-weight: bold; }\r\n" + 
+				"            span.city{color:blue; font-weight: bold; }\r\n" + 
+				"            span.height{color:navy; font-weight: bold; }\r\n" + 
+				"            span.food{color:purple; font-weight: bold; }\r\n" + 
+				"        </style>\r\n" + 
+				"    </head>\r\n" + 
+				"    <body>\r\n" + 
+				"        <h2>개인 정보 입력 결과(GET)</h2>");
 		
 		
+		
+		if(food != null) {out.printf("        <span class=\"name\">%s</span>님은 \r\n" + 
+				"        <span class=\"age\">%s</span> 이시며,\r\n" + 
+				"        <span class=\"city\">%s</span> 에 사는\r\n" + 
+				"        키 <span class=\"height\">%s</span> cm인 \r\n" + 
+				"        <span class=\"gender\">%s</span> 입니다.\r\n" + 
+				"        <br>\r\n" + 
+				"        좋아하는 음식은 \r\n" + 
+				"        <span class=\"food\">%s</span> 입니다. \r\n" + 
+				"        \r\n" + 
+				"    </body>\r\n" + 
+				" </html>", name, age, city, height, gender, 
+					String.join(", ", food));
+					// String.join() : 배열의 각 요소들을 구분자를 이용해 한 문자열로 합침
+		}else {
+			out.print("food를 선택해주세요.");
+		}
+		
+		
+		
+				
 	}
 	
 
@@ -118,7 +157,9 @@ public class TestServlet1 extends HttpServlet {
 	 * @see Servlet#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+		System.out.println("destroy() 메소드 실행!!!!!!!!!!!!");
+		// 서블릿 내에서 소스 수정 시 이전 서블릿은 폐기되고 톰캣이 주기적으로 소스가 변화된 부분을 
+		// 다시 로드하는데 그때 수정된 서블릿의 내용이 서버에 반영됨
 		
 	}
 
