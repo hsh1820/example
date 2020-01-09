@@ -99,13 +99,33 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-                        egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-                        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                        nibh, ut fermentum massa justo sit amet risus.</p>
+                    <h2>Servlet - 3 (비즈니스 로직)</h2>
                     <p>
-                        <a class="btn btn-secondary" href="#" role="button">View
+                    	Servlet은 Java Class이기 때문에 
+                    	비즈니스 로직(데이터 가공, DB 접근, 트랜잭션처리 등의 기능 수행을 위한 로직)
+                    	수행이 Front 관련 기술들(HTML, Javascript, jQuery) 보다 
+                    	간편하고 효율적이다.
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet3.html" role="button">View
+                            details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <h2>Servlet - 4 (Servlet + JSP)</h2>
+                    <p>
+                    	Servlet은 응답 화면에 표현될 HTML 코드를 프로그램적으로 작성한다.(==자바로 작성된다는 것)<br>
+                    	이로 인해 생기는 [단점]은 비즈니스 로직과 화면구현 디자인 코드가 같이 있어
+                    	가독성이 떨어지고 개발이 어려워진다.<br>
+                    	이러한 구조는 협업을 중요 시 하는 개발자들의 입장에서 좋지 않은 코딩 방법으로 
+                    	비즈니스 로직과 디자인은 분리되는 것이 좋다.<br>
+                    	
+                    	또한 Servlet에서 HTML코드를 수정하는 경우 재 컴파일을 위해 
+                    	서버를 재시동 해야하는 문제가 있고, 
+                    	HTML에는 서버에서 얻어온 정보를 동적으로 반영하기 힘들다.  
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet4.html" role="button">View
                             details &raquo;</a>
                     </p>
                 </div>
