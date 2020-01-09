@@ -1,0 +1,27 @@
+.nav-size {
+    width: 100%;
+}
+.nav-item-size{
+    width: 50%;
+}
+.nav-item-font-align {
+    text-align: center;
+}
+.nav-tab-padding {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 3%;
+}
+
+.tab-content-width{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.nav-btn-search-width{
+    padding: 30%;    
+} 
+.nav-tab-content-area{
+    background-color: gray;
+    width: 100%;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>1_Servlet</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+    
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">Hello, JSP world!</h1>
+                <p>
+                	1월 10일 아침에 복습하면서 작성
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="https://www.google.com/search?q=%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80&rlz=1C1QJDB_enKR845KR845&oq=%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80&aqs=chrome..69i57j0l7.1141j0j4&sourceid=chrome&ie=UTF-8" role="button">Learn
+                        more &raquo;</a>
+                </p>
+            </div>
+        </div>
+    
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>JSP - 1</h2>
+                    <p>
+                    	1월 10일 작성 예정
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="views/01_sum.jsp" role="button">View
+                            details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Servlet - 2 (POST)</h2>
+                    <p>
+                    	POST 방식은 URL에 변수(데이터)를 노출하지 않고 요청하는 것으로 보안 유지가 가능하다.	<br>
+                    	
+                    	HTTP Body에 데이터를 포함하여 전송하므로 
+                    	데이터 길이에 제한은 없지만, 대신 최대 요청 받는시간(Time Out)이 존재해 
+                    	페이지 요청에 대해 기다리는 시간이 있음<br>
+                    	
+                    	POST 방식은 URL에 데이터가 노출이 되지 않으므로 캐싱 불가능.<br>
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet2.html" role="button">View
+                            details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Servlet - 3 (비즈니스 로직)</h2>
+                    <p>
+                    	Servlet은 Java Class이기 때문에 
+                    	비즈니스 로직(데이터 가공, DB 접근, 트랜잭션처리 등의 기능 수행을 위한 로직)
+                    	수행이 Front 관련 기술들(HTML, Javascript, jQuery) 보다 
+                    	간편하고 효율적이다.
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet3.html" role="button">View
+                            details &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <h2>Servlet - 4 (Servlet + JSP)</h2>
+                    <p>
+                    	Servlet은 응답 화면에 표현될 HTML 코드를 프로그램적으로 작성한다.(==자바로 작성된다는 것)<br>
+                    	이로 인해 생기는 [단점]은 비즈니스 로직과 화면구현 디자인 코드가 같이 있어
+                    	가독성이 떨어지고 개발이 어려워진다.<br>
+                    	이러한 구조는 협업을 중요 시 하는 개발자들의 입장에서 좋지 않은 코딩 방법으로 
+                    	비즈니스 로직과 디자인은 분리되는 것이 좋다.<br>
+                    	
+                    	또한 Servlet에서 HTML코드를 수정하는 경우 재 컴파일을 위해 
+                    	서버를 재시동 해야하는 문제가 있고, 
+                    	HTML에는 서버에서 얻어온 정보를 동적으로 반영하기 힘들다.  
+                    </p>
+                    <p>
+                        <a class="btn btn-secondary" href="Views/testServlet4.html" role="button">View
+                            details &raquo;</a>
+                    </p>
+                </div>
+            </div>
+    
+            <hr>
+    
+        </div>
+    
+        <footer class="container">
+            <p>&copy; Company 2017-2018</p>
+        </footer>
+
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    </body>
+</html>
