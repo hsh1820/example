@@ -20,13 +20,21 @@
     <servlet-name>TestServlet2</servlet-name>
     <url-pattern>/testServlet2.do</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>TestServlet3</servlet-name>
     <servlet-class>com.kh.servlet.TestServlet3</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TestServlet3</servlet-name>
     <url-pattern>/testServlet3.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>TestServlet4</servlet-name>
+    <servlet-class>com.kh.servlet.TestServlet4</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet4</servlet-name>
+    <url-pattern>/testServlet4.do</url-pattern>
   </servlet-mapping>
 </web-app>
