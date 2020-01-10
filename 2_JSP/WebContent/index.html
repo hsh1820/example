@@ -43,7 +43,18 @@
             <div class="container">
                 <h1 class="display-3">Hello, JSP world!</h1>
                 <p>
-                	1월 10일 아침에 복습하면서 작성
+                	JSP(Java Server Page)란, 
+                	Java 코드가 들어가 있는 HTML 코드를 말하며
+                	서블릿의 복잡함을 간단하게 작성, 해결할 수 있다.<br>
+                	
+                	JSP의 가장 큰 장점은
+                	Servlet에서 비즈니스 로직(Java)과
+                	프레젠테이션 로직(HTML)을 분리할 수 있다는 것이다.<br>
+                	
+                	프로그래머가 직접 Servlet에 코딩한 것 보다
+                	더욱 최적화된 형태의 Servlet을 생성해줌<br>
+                	
+                	웹 애플리케이션 상에서 변수의 사용 가능한 범위 설정이 쉽다.
                 </p>
                 <p>
                     <a class="btn btn-primary btn-lg" href="https://www.google.com/search?q=%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80&rlz=1C1QJDB_enKR845KR845&oq=%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80&aqs=chrome..69i57j0l7.1141j0j4&sourceid=chrome&ie=UTF-8" role="button">Learn
@@ -58,7 +69,19 @@
                 <div class="col-md-4">
                     <h2>JSP - 1</h2>
                     <p>
-                    	1월 10일 작성 예정
+                    	스크립팅 원소(Scripting Element)는 
+                    	JSP 페이지에서 자바 코드를 직접 기술할 수 있게 해주는 기능.<br>
+                    	
+                    	1. &lt;%!  %&gt; (선언문) : 
+                    		멤버 변수, 메소드를 선언하기 위해 사용된다.
+                    		사용도가 낮다 <br>
+                    		
+                    	1. &lt;%  %&gt; (스크립틀릿, scriptlet) : 
+                    		JSP에서 자바 코드 사용을 가능하게 해줌.<br> 
+                    	
+                    	3. &lt;%=  %&gt; (표현식, expression) :
+                    		Java에서 작성한 변수, 결과값을 출력하기 위해 사용된다.<br>
+                    	 
                     </p>
                     <p>
                         <a class="btn btn-secondary" href="views/01_sum.jsp" role="button">View
@@ -66,49 +89,52 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Servlet - 2 (POST)</h2>
+                    <h2>JSP - 2</h2>
                     <p>
-                    	POST 방식은 URL에 변수(데이터)를 노출하지 않고 요청하는 것으로 보안 유지가 가능하다.	<br>
+                    	페이지 지시자 <br>
+                    	JSP 맨 윗 부분에는 JSP 파일의 속성을 기술하는 
+                    	Page 지시어(지시자)가 존재함. <br>
                     	
-                    	HTTP Body에 데이터를 포함하여 전송하므로 
-                    	데이터 길이에 제한은 없지만, 대신 최대 요청 받는시간(Time Out)이 존재해 
-                    	페이지 요청에 대해 기다리는 시간이 있음<br>
-                    	
-                    	POST 방식은 URL에 데이터가 노출이 되지 않으므로 캐싱 불가능.<br>
+                    	language : 사용할 스크립트 언어 유형 지정<br>
+                    	contentType : 웹 브라우저가 받아 볼 페이지의 형식, 인코딩 지정<br>
+                    	pageEncoding : JSP 파일에 기록된 자바 코드의 인코딩 방식 지정<br>
+                    	import : Java의 import와 같이 타 클래스 사용 시  추가.<br>
+                    	errorPage : 해당 JSP에서 오류 발생 시 이동할 에러 페이지 지정<br>
+                    	isErrorPage : 해당 JSP가 오류 처리 전용 페이지 임을 지정
                     </p>
                     <p>
-                        <a class="btn btn-secondary" href="Views/testServlet2.html" role="button">View
+                        <a class="btn btn-secondary" href="views/02_directivePage.jsp" role="button">View
                             details &raquo;</a>
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Servlet - 3 (비즈니스 로직)</h2>
+                    <h2>JSP - 3</h2>
                     <p>
-                    	Servlet은 Java Class이기 때문에 
-                    	비즈니스 로직(데이터 가공, DB 접근, 트랜잭션처리 등의 기능 수행을 위한 로직)
-                    	수행이 Front 관련 기술들(HTML, Javascript, jQuery) 보다 
-                    	간편하고 효율적이다.
+                    	include<br>
+                    	정적 include 방식으로 페이지 내에 include한 소스코드가 
+                    	단순 텍스트로 그대로 복사되어 포함된다.
+                    	포함된 후 컴파일이 일어나는데 이를 정적 include방식이라고 함.<br>
+                    	
+                    	include한 페이지 코드 내부에 변수가 선언되어 있다면
+                    	베이스가 되는 페이지의 변수와 충돌이 날 수 있으므로 유의해야함.
+                    	<br>
+                    	include페이지 내의 import는 베이스와 다른 include페이지와 공유된다.<br>
+                    	
+                    	include는 페이지를 조각내어 필요한 부분에 삽입할 때 주로 사용된다.
                     </p>
                     <p>
-                        <a class="btn btn-secondary" href="Views/testServlet3.html" role="button">View
+                        <a class="btn btn-secondary" href="views/03_include.jsp" role="button">View
                             details &raquo;</a>
                     </p>
                 </div>
                 <div class="col-md-12">
-                    <h2>Servlet - 4 (Servlet + JSP)</h2>
+                    <h2>Servlet + JSP - 4</h2>
                     <p>
-                    	Servlet은 응답 화면에 표현될 HTML 코드를 프로그램적으로 작성한다.(==자바로 작성된다는 것)<br>
-                    	이로 인해 생기는 [단점]은 비즈니스 로직과 화면구현 디자인 코드가 같이 있어
-                    	가독성이 떨어지고 개발이 어려워진다.<br>
-                    	이러한 구조는 협업을 중요 시 하는 개발자들의 입장에서 좋지 않은 코딩 방법으로 
-                    	비즈니스 로직과 디자인은 분리되는 것이 좋다.<br>
-                    	
-                    	또한 Servlet에서 HTML코드를 수정하는 경우 재 컴파일을 위해 
-                    	서버를 재시동 해야하는 문제가 있고, 
-                    	HTML에는 서버에서 얻어온 정보를 동적으로 반영하기 힘들다.  
+                    	피자 주문 기능
+                    	 
                     </p>
                     <p>
-                        <a class="btn btn-secondary" href="Views/testServlet4.html" role="button">View
+                        <a class="btn btn-secondary" href="views/04_pizza.jsp" role="button">View
                             details &raquo;</a>
                     </p>
                 </div>
