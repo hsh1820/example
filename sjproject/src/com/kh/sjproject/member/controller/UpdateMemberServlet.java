@@ -47,13 +47,13 @@ public class UpdateMemberServlet extends HttpServlet {
 			
 			
 			if(result >0) {
-				response.sendRedirect(request.getContextPath());
 				session.setAttribute("msg", "수정성공");
 			}else {
-				response.sendRedirect(request.getContextPath());
 				session.setAttribute("msg", "수정실패");
 			}
 			
+			RequestDispatcher view = request.getRequestDispatcher("mypage.do");
+			view.forward(request, response);
 			
 		}catch(Exception e) {
 			request.setAttribute("errorMsg", "회원 정보 수정 과정에서 오류가 발생하였습니다.");
