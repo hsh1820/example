@@ -61,6 +61,27 @@ public class Member {
 		this.memberAddress = memberAddress;
 		this.memberInterest = memberInterest;
 	}
+	
+	public Member(int memberNo, String memberId, String memberName, String memberPhone, String memberEmail,
+			String memberAddress, String memberInterest) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberEmail = memberEmail;
+		this.memberAddress = memberAddress;
+		this.memberInterest = memberInterest;
+	}
+
+	public Member(String memberId,String memberPhone, String memberEmail, String memberAddress,
+			String memberInterest) {
+		this.memberId = memberId;
+		this.memberPhone = memberPhone;
+		this.memberEmail = memberEmail;
+		this.memberAddress = memberAddress;
+		this.memberInterest = memberInterest;
+	}
 
 	public int getMemberNo() {
 		return memberNo;

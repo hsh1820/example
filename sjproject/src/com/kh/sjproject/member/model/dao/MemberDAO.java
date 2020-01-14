@@ -126,5 +126,63 @@ public class MemberDAO {
 		return result;
 	}
 
+	/**회원 정보 조회요 Dao
+	 * @param conn
+	 * @param memberId
+	 * @return Exception
+	 */
+	public Member selectMember(Connection conn, String memberId) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		Member selectMember = null;
+		
+		String query = prop.getProperty("selectMember");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				selectMember = new Member(rset.getInt("MEMBER_NO"), 
+						rset.getString("MEMBER_ID"), 
+						rset.getString("MEMBER_NM"),
+						rset.getString("MEMBER_PHONE"),
+						rset.getString("MEMBER_EMAIL"),
+						rset.getString("MEMBER_ADDR"), 
+						rset.getString("MEMBER_INTEREST"));
+			}
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return selectMember;
+	}
+
+	public int UpdateMember(Connection conn, Member member) throws Exception{
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, member.getMemberPhone());
+			pstmt.setString(2, member.getMemberEmail());
+			pstmt.setString(3, member.getMemberAddress());
+			pstmt.setString(4, member.getMemberInterest());
+			pstmt.setString(5, member.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 }

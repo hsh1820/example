@@ -44,5 +44,29 @@ public class MemberService {
 		
 		return result;
 	}
+
+	/**회원 정보 조회용 서비스 
+	 * @param memberId
+	 * @return selectMember
+	 * @throws Exception
+	 */
+	public Member selectMember(String memberId) throws Exception{
+		Connection conn = getConnection();
+		return new MemberDAO().selectMember(conn, memberId);
+	}
+
+	public int UpdateMember(Member member) throws Exception{
+		Connection conn = getConnection(); 
+		
+		int result = new MemberDAO().UpdateMember(conn, member);
+		
+		if(result >0 ) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 	
 }

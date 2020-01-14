@@ -29,7 +29,7 @@ public class SignUpServlet extends HttpServlet {
 				request.getParameter("phone3")+"-"+
 				request.getParameter("phone3");
 		String memberEmail = request.getParameter("email");
-		String memberAddress = request.getParameter("address1")+request.getParameter("address2");
+		String memberAddress = request.getParameter("post")+","+request.getParameter("address1")+","+request.getParameter("address2");
 		String[] memberInterests = request.getParameterValues("memberInterest");
 		
 		String memberInterest = String.join(", ", memberInterests);
