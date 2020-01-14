@@ -143,7 +143,7 @@
 										</label>
 									</div>
 									<button class="btn btn-lg btn-primary btn-block" type="submit">login</button>
-									<a class="btn btn-lg btn-secondary btn-block" href="#">join</a>
+									<a class="btn btn-lg btn-secondary btn-block" href="<%= request.getContextPath() %>/member/signUpForm.do">join</a>
 								</form>
 							</div>
 							<div class="modal-footer">

@@ -20,5 +20,29 @@ public class MemberService {
 		return new MemberDAO().loginMember(conn, member);
 		
 	}
+
+	/**아이디 중복 확인용 Service
+	 * @param id
+	 * @return result
+	 * @throws Exception
+	 */
+	public int idDupCheck(String id) throws Exception {
+		Connection conn = getConnection();
+		return new MemberDAO().idDupCheck(conn,id);
+	}
+
+	public int joinMember(Member member) throws Exception{
+		Connection conn = getConnection(); 
+		
+		int result = new MemberDAO().joinMember(conn, member);
+		
+		if(result >0 ) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 	
 }
