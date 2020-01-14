@@ -70,5 +70,61 @@ public class MemberDAO {
 		}
 		return loginMember;
 	}
+
+	/**아이디 중복체크 확인용 Dao
+	 * @param conn
+	 * @param id
+	 * @return result
+	 * @throws Exception
+	 */
+	public int idDupCheck(Connection conn, String id) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("idDupCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return result;
+	}
+	
+	public int joinMember(Connection conn, Member member) throws Exception {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("joinMember");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberPwd());
+			pstmt.setString(3, member.getMemberName());
+			pstmt.setString(4, member.getMemberPhone());
+			pstmt.setString(5, member.getMemberEmail());
+			pstmt.setString(6, member.getMemberAddress());
+			pstmt.setString(7, member.getMemberInterest());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 }

@@ -17,8 +17,8 @@
 </head>
 <body>
 	<div class="container">
-		<%@ include file="views/common/header.jsp"%>
-		<%@ include file="views/common/nav.jsp"%>
+		<%@ include file="WEB-INF/views/common/header.jsp"%>
+		<%@ include file="WEB-INF/views/common/nav.jsp"%>
 
 		<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark"
 			id="jumbo1">
@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		
-		<%@ include file="views/common/footer.jsp"%>
+		<%@ include file="WEB-INF/views/common/footer.jsp"%>
 	</div>
 </body>
 </html>
