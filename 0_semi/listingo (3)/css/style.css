@@ -1,23 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
-
-.header-padding{
-  height : 250px;
-}
-
-.display-non {
-  display: none;
-  border: 1px solid red;
-}
-.tab-content {
-  height : 80px;
-}
-#header-tab-btn {
-  height: 80px;
-  background-color:#0f2137;
-  border: 1px solid #0f2137;
-}
-
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_extend.scss */
 .flex-center-start {
   display: -webkit-box;
@@ -901,7 +883,8 @@ h3 {
 /* line 16, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .main-header-area {
   padding: 18px 0;
-  background: lightgray;
+  background: #fff;
+  background: transparent;
   padding: 25px 150px;
 }
 
@@ -1095,7 +1078,7 @@ h3 {
 /* line 133, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu {
   text-align: center;
-  padding: 0px 0;
+  padding: 12px 0;
 }
 
 /* line 137, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
@@ -1274,8 +1257,8 @@ h3 {
   content: "";
   background: #F91842;
   width: 100%;
-  height: 2px;
-  bottom: -10px;
+  height: 3px;
+  bottom: -27px;
   left: 0;
   opacity: 0;
   transform: scaleX(0);
@@ -1284,24 +1267,6 @@ h3 {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-
-
-.add_underline{
-  position: absolute;
-  content: "";
-  background: #F91842;
-  width: 100%;
-  height: 2px;
-  bottom: -10px;
-  left: 0;
-  opacity: 0;
-  transform: scaleX(0);
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
 
 /* line 309, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .header-top_area {
@@ -1439,7 +1404,7 @@ h3 {
 
 /* line 25, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_slider.scss */
 .slider_area .single_slider {
-  height: 0;
+  height: 900px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -3248,8 +3213,8 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_popular_catagory.scss */
 .popular_catagory_area {
-  padding-top: 120px;
-  padding-bottom: 0px;
+  padding-top: 150px;
+  padding-bottom: 120px;
 }
 
 @media (max-width: 767px) {
@@ -4290,7 +4255,7 @@ p #amount {
 
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_explorer.scss */
 .explorer_europe {
-  padding-bottom: 0px;
+  padding-bottom: 120px;
 }
 
 @media (max-width: 767px) {
