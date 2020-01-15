@@ -7,7 +7,7 @@
 <title>아이디 중복 검사</title>
 </head>
 <!-- onload를 이용해 idValue() 실행 -->
-<body onload="idValue();"> <!-- 페이지 로딩이 다 된 다음 idValue() 실행 -->
+<body onload="idValue();">
 	<h4>아이디 중복 검사</h4>
 	<br>
 	<form action="<%= request.getContextPath() %>/member/idDupCheck.do" id="idChekcForm" method="post">
@@ -47,14 +47,14 @@
 			var id;
 			if("<%= request.getAttribute("result") %>" == "null"){
 				id = opener.document.signUpForm.id.value; // 부모창의 아이디 저장
-				// 나를 연 부모창. 문서에서. signUpForm인 name값. id라는 input태그의. value값을 가져와라
-			}else{ // result가 있으면 DB에서 조회해서 값을 가져온 것
+				// opener : 나를 오픈한 부모 창
+			}else{
 				// 중복 체크 후 아이디 저장
-				id = "<%= request.getAttribute("id") %>"; /* DB에서 가져온 ID값 저장 */
+				id = "<%= request.getAttribute("id") %>"; 
 				
 				// 중복체크 확인 버튼 활성/비활성
-				if(<%= request.getAttribute("result")%> == 0){ // 0이면 사용가능
-					document.getElementById("confirmId").removeAttribute("disabled");	// disabled 속성 제거		
+				if(<%= request.getAttribute("result")%> == 0){
+					document.getElementById("confirmId").removeAttribute("disabled");			
 				}else{
 					document.getElementById("confirmId").setAttribute("disabled", "disabled");
 				}
@@ -68,15 +68,12 @@
 			console.log(opener.document.signUpForm.idDup);
 			if(<%= request.getAttribute("result")%> == 0){
 				opener.document.signUpForm.id.value = document.getElementById("id").value;
-				// 중복체크를 확인받아온 아이디 값을 부모창의 id input태그 value 로 전달
 				opener.document.signUpForm.idDup.value = true;
-				
 			}else{
 				opener.document.signUpForm.idDup.value = false;
 			}
 		
-			if(opener != null){ // 아이디 중복창 닫기 
-				// 부모창이 있으면 현재 창 닫기
+			if(opener != null){ // 아이디 중복창 닫기
 				opener.checkForm = null;
 				self.close();
 			}

@@ -9,13 +9,12 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
     <style>
-    	/* number 태그 화살표 제거 // safari 계열 브라우저 : webkit*/ 
-    	/* text 태그 : maxLength 가 있음 
-    	   number 태그 : 없음*/
+    	/* number 태그 화살표 제거 */
 	    input[type="number"]::-webkit-outer-spin-button,
 	    input[type="number"]::-webkit-inner-spin-button {
 	        -webkit-appearance: none;
 	        margin: 0;
+	        /* number형식의 input 태그의 스핀버튼 없애기 */
 	    }
 	</style>
 </head>
@@ -244,7 +243,6 @@
 				"pwd2":false,
 				"name":false,
 				"phone":false,
-				"name":false,
 				"email":false
 				};
         
@@ -264,68 +262,76 @@
 			
 			// 아이디  유효성 검사
 			// 첫글자는 영어 소문자, 나머지 글자는 영어 대,소문자 + 숫자, 총 6~12글자
-			
 			$id.on("input",function(){
 				var regExp = /^[a-z][a-zA-z\d]{5,11}$/;
-				if(!regExp.test($id.val())){
-					$("#checkId").text("아이디 형식이 유효하지않습니다.")
-					.css("color","red");
+				if( !regExp.test($id.val() )){
+					$("#checkId").text("아이디 형식이 유효하지 않습니다.")
+						.css("color","red");
+					
 					signUpCheck.id = false;
 					
 				}else{
-					$("#checkId").text("유효한 형식의 아이디 입니다.")
+					$("#checkId").text("유효한 아이디 형식입니다.")
 					.css("color","green");
+					
 					signUpCheck.id = true;
 				}
-				
 			});
+
 			
 			// 아이디 중복 체크창 오픈
 			$("#idDupCheck").click(function(){
-				window.open("idDupForm.do", "idDupForm", "width=300, height=200");
-				// 			      팝업 창 주소		   팝업 창 이름	        설정
+				window.open("idDupForm.do","idDupForm", "width=300, height=200");
+				//             팝업 창 주소           팝업 창 이름    설정
 			});
 			
 			// 비밀번호  유효성 검사
 			//영어 대,소문자 + 숫자, 총 6~12글자
 			$pwd1.on("input",function(){
-				var regExp = /^[A-Za-z0-9]{6,12}$/;
-				if(!regExp.test($pwd1.val())){
-					$("#checkPwd1").text("비밀번호 형식이 유효하지않습니다.")
-					.css("color","red");
-					signUpCheck.pwd1 = false;
-				}else{
-					$("#checkPwd1").text("유효한 형식의 비밀번호 입니다.")
-					.css("color","green");
-					signUpCheck.pwd1 = true;
-				}
+			var regExp = /^[A-Za-z0-9]{6,12}$/;
+			if( !regExp.test($pwd1.val()) ){
+				$("#checkPwd1").text("비밀번호 형식이 유효하지 않습니다.").css("color","red");
 				
+				signUpCheck.pwd1 = false;
+			}else{
+				$("#checkPwd1").text("유효한 비밀번호 형식입니다.").css("color","green");
+				
+				signUpCheck.pwd1 = true;
+			}
 			});
+				
+			
 			
 			
 			// 비밀번호 일치 여부
 			$pwd2.on("input",function(){
-				if($pwd1.val().trim() != $pwd2.val().trim()){
-					$("#checkPwd2").text("비밀번호가 일치하지않습니다.").css("color","red");
+				
+				// trim() : 공백제거
+				if( $pwd1.val().trim() != $pwd2.val().trim() ){
+					$("#checkPwd2").text("비밀번호가 일치하지 않습니다.").css("color","red");
 					signUpCheck.pwd2 = false;
 				}else{
 					$("#checkPwd2").text("비밀번호가 일치합니다.").css("color","green");
 					signUpCheck.pwd2 = true;
 				}
-			})
+			});
 			
 			// 이름 유효성 검사
 			// 한글 두 글자 이상
-			
 			$name.on("input",function(){
-				var regExp =  /^[가-힣]{2,}$/;
-				if(!regExp.test($name.val())){
-					signUpCheck.name = false;
-				}else{
-					signUpCheck.name = true;
-				}
+			var regExp =  /^[가-힣]{2,}$/;
+			if( !regExp.test($name.val()) ){
+				$("#checkName").text("이름 형식이 유효하지 않습니다.").css("color","red");
 				
+				signUpCheck.name = false;
+			}else{
+				$("#checkName").text("유효한 이름 형식입니다.").css("color","green");
+				
+				signUpCheck.name = true;
+			}
 			});
+			
+				
 			
 			
 			// 전화번호 관련
@@ -340,31 +346,31 @@
                 var regExp2 =  /^\d{3,4}$/; // 숫자 3~4 글자
                 var regExp3 =  /^\d{4,4}$/; // 숫자 4 글자
                 
-				if(!regExp2.test($phone2.val()) || !regExp3.test($phone3.val()) ){
-					$("#checkPhone").text("전화번호가 일치하지않습니다.").css("color","red");	
-					signUpCheck.phone=false;						
-				}else{
-					$("#checkPhone").text("유효한 전화번호 형식입니다.").css("color","green");
-					signUpCheck.phone=true;
-				}
+                // 둘 중 하나라도 유효성이 맞지 않으면
+                if(!regExp2.test( $phone2.val() ) || !regExp3.test( $phone3.val() )  ){
+                	$("#checkPhone").text("전화번호가 유효하지 않습니다.").css("color","red");
+                	signUpCheck.phone = false;
+                }else{
+                	$("#checkPhone").text("유효한 전화번호 형식입니다.").css("color","green");
+                	signUpCheck.phone = true;
+                }
             });
 			
 			
 			// 이메일 유효성 검사
 			$email.on("input",function(){
-				var regExp = regExp =  /^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/;
-				if(!regExp.test($email.val())){
-					$("#checkEmail").text("이메일 형식이 유효하지않습니다.")
-					.css("color","red");
-					signUpCheck.email = false;
-					
-				}else{
-					$("#checkEmail").text("유효한 형식의 이메일 입니다.")
-					.css("color","green");
-					signUpCheck.email = true;
-				}
+			var regExp =  /^[\w]{4,}@[\w]+(\.[\w]+){1,3}$/; 
+			if( !regExp.test($email.val()) ){
+				$("#checkEmail").text("이메일 형식이 유효하지 않습니다.").css("color","red");
 				
+				signUpCheck.email = false;
+			}else{
+				$("#checkEmail").text("유효한 이메일 형식입니다.").css("color","green");
+				
+				signUpCheck.email = true;
+			}
 			});
+				
 			
 			
 		});

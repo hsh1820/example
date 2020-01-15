@@ -37,12 +37,11 @@ public class UpdateMemberServlet extends HttpServlet {
 		
 		String memberInterest = String.join(", ", memberInterests);
 		
-		Member member = new Member(memberId, memberPhone, memberEmail,
-				memberAddress, memberInterest);
+		Member member = new Member(memberId, memberPhone, memberEmail,memberAddress, memberInterest);
 				
 		
 		try {
-			int result = new MemberService().UpdateMember(member);
+			int result = new MemberService().updateMember(member,memberId);
 			
 			
 			
@@ -50,8 +49,8 @@ public class UpdateMemberServlet extends HttpServlet {
 				session.setAttribute("msg", "수정성공");
 			}else {
 				session.setAttribute("msg", "수정실패");
-			}
-			
+			} 
+			 
 			RequestDispatcher view = request.getRequestDispatcher("mypage.do");
 			view.forward(request, response);
 			

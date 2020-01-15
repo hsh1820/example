@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -61,6 +62,39 @@ public class LoginServlet extends HttpServlet {
 				
 				// 로그인이 성공한 경우
 				session.setAttribute("loginMember", loginMember);
+				
+				/* 
+				 * Session은 관련 자원을 모두 Server에서 관리하고 
+				 *  Session ID만 Cookie를 통해 Brower로 전달.
+				 *  
+				 * Cookie는 Server에 의해서 생성이 되지만 
+				 *  관리는 Brower에서 진행 함.(Cookie 최대 크기는 5kb)
+				 * */ 
+				
+				// C1) 아이디 저장 체크박스 값 가져오기
+				String save = request.getParameter("save");
+				System.out.println(save);
+				// -> 체크박스에 별도의 value가 없을 경우 
+				// 체크시 on 반환 / 미 체크시 null 반환
+				
+				// C2) javax.servlet.http.Cookie 이용하여 쿠키 생성
+				Cookie cookie = new Cookie("saveId", memberId);
+				// C3) 아이디 저장이 체크된 경우
+				if(save != null) {
+					// 쿠키가 유지될 수 있는 유효기간 설정
+					cookie.setMaxAge(60 * 60 * 24 * 7);  // 7day
+				}else {
+					cookie.setMaxAge(0); // 쿠키 기간 만료
+				}
+				
+				// C4) 쿠키가 사용될 수 있는 요효한 디렉토리(URL경로) 설정
+				cookie.setPath("/"); // 해당 도메인 전역에서 사용 가능
+				
+				// C5) repsonse 객체에 쿠키를 담아 클라이언트(브라우저) 전송
+				response.addCookie(cookie);
+				// -> 이후쿠키 관리는 브라우저가 맡아서 진행
+				
+				
 								
 			}else {
 				// 2) 로그인 서비스 요청 실패

@@ -22,14 +22,17 @@
 				<h3>비밀번호 변경</h3>
 				<hr>
 				<div class="bg-white rounded shadow-sm container p-3">
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" method="POST" action="updatePwd.do" 
+						onsubmit="return validate();">
 						<!-- 아이디 -->
 						<div class="row mb-3 form-row">
 							<div class="col-md-3">
 								<h6>아이디</h6>
 							</div>
 							<div class="col-md-6">
-								<h5 id="id">세션에 저장된 아이디</h5>
+								<h5 id="id"><%=loginMember.getMemberId() %></h5>
+								<!-- 완성된 하나의 페이지에서 한 부분에서 session에 저장된 값이 있다면 가져다 쓸수 있음
+									(header를 include 했기 때문에 사용 가능) -->
 							</div>
 						</div>
 
@@ -40,7 +43,7 @@
 								<h6>현재 비밀번호</h6>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" id="currentPwd"
+								<input type="password" class="form-control" id="currentPwd"
 									name="currentPwd">
 							</div>
 						</div>
@@ -51,7 +54,7 @@
 								<h6>새 비밀번호</h6>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" id="newPwd1"
+								<input type="password" class="form-control" id="newPwd1"
 									name="newPwd1">
 							</div>
 						</div>
@@ -62,7 +65,7 @@
 								<h6>새 비밀번호 확인</h6>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" id="newPwd2"
+								<input type="password" class="form-control" id="newPwd2"
 									name="newPwd2">
 							</div>
 						</div>
@@ -85,33 +88,29 @@
 	</script>
 
 	<script>
-		// 각 유효성 검사 결과를 저장할 객체
-		var singUpCheck = {
-			"phone" : false,
-			"email" : false
-		};
-
-		// 실시간 입력 형식 검사
-		// 정규표현식
-		$(document).ready(function() {
-
-			// jQuery 변수 : 변수에 직접적으로 jQuery메소드를 사용할 수 있음.
-			var $phone2 = $("#phone2");
-			var $phone3 = $("#phone3");
-			var $email = $("#email");
-		});
-
-
 		// submit 동작
 		function validate() {
-
-			for ( var key in singUpCheck) {
-				if (!singUpCheck[key]) {
-					alert("일부 입력값이 잘못되었습니다.");
-					var id = "#" + key;
-					$(id).focus();
-					return false;
-				}
+			// 비밀번호 유효성 검사
+			// 영어 대,소문자 + 숫자, 총 6~12글자
+			
+			var regExp = /^[a-zA-Z\d]{6,12}$/;
+			
+			if( !regExp.test($("#newPwd1").val() )){
+				
+				alert("유효하지 않은 비밀번호 입니다.");
+				$("#newPwd1").val(""); // 비밀번호 지워버리기
+				$("#newPwd1").focus();
+				
+				return false;
+			}
+			
+			// 새 비밀번호 일치 여부 확인
+			if( $("#newPwd1").val() != $("#newPwd2").val() ){
+				alert("새 비밀번호가 일치하지 않습니다.");
+				$("#newPwd2").val("");
+				$("#newPwd2").focus();
+				
+				return false;
 			}
 		}
 		

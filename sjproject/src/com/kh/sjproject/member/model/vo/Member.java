@@ -16,51 +16,54 @@ public class Member {
 	private String memberGrade;
 	
 	public Member() {}
-
+	
+	
 	public Member(String memberId, String memberPwd) {
 		super();
-		this.memberPwd = memberPwd;
 		this.memberId = memberId;
-
+		this.memberPwd = memberPwd;
 	}
 	
-	public Member(int memberNo, String memberId, String memberName, String memberPhone, String memberEmail,
-			String memberAddress, String memberInterest, Date memberEnrollDate, String memberStatus,
-			String memberGrade) {
+	
+	
+	public Member(String memberPhone, String memberEmail, String memberAddress, String memberInterest) {
 		super();
-		this.memberNo = memberNo;
-		this.memberId = memberId;
+		this.memberPhone = memberPhone;
+		this.memberEmail = memberEmail;
+		this.memberAddress = memberAddress;
+		this.memberInterest = memberInterest;
+	}
+
+
+	public Member(String memberId, String memberPwd, String memberName, String memberPhone, String memberEmail,
+			String memberAddress, String memberInterest) {
+		this(memberId, memberPwd);
 		this.memberName = memberName;
 		this.memberPhone = memberPhone;
 		this.memberEmail = memberEmail;
 		this.memberAddress = memberAddress;
 		this.memberInterest = memberInterest;
+	}
+
+	public Member(int memberNo, String memberId, String memberName, String memberPhone, String memberEmail,
+			String memberAddress, String memberInterest, Date memberEnrollDate, String memberStatus,
+			String memberGrade) {
+		
+		this(memberId, memberPhone, memberName, memberPhone, memberEmail, memberAddress, memberInterest);
+		this.memberNo = memberNo;
 		this.memberEnrollDate = memberEnrollDate;
 		this.memberStatus = memberStatus;
 		this.memberGrade = memberGrade;
 	}
 
+	
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
 			String memberEmail, String memberAddress, String memberInterest, Date memberEnrollDate, String memberStatus,
 			String memberGrade) {
-		
-		this(memberNo, memberId, memberName,
-				memberPhone, memberEmail, memberAddress, 
-				memberInterest, memberEnrollDate, memberStatus, 
-				memberGrade);
+		this(memberNo, memberId, memberName, memberPhone, memberEmail, memberAddress, memberInterest, memberEnrollDate, memberStatus, memberGrade);
 		this.memberPwd = memberPwd;
 	}
 
-	public Member(String memberId, String memberPwd, String memberName, String memberPhone, String memberEmail,
-			String memberAddress, String memberInterest) {
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-		this.memberName = memberName;
-		this.memberPhone = memberPhone;
-		this.memberEmail = memberEmail;
-		this.memberAddress = memberAddress;
-		this.memberInterest = memberInterest;
-	}
 	
 	public Member(int memberNo, String memberId, String memberName, String memberPhone, String memberEmail,
 			String memberAddress, String memberInterest) {
@@ -74,14 +77,16 @@ public class Member {
 		this.memberInterest = memberInterest;
 	}
 
-	public Member(String memberId,String memberPhone, String memberEmail, String memberAddress,
+	public Member(String memberId, String memberPhone, String memberEmail, String memberAddress,
 			String memberInterest) {
 		this.memberId = memberId;
 		this.memberPhone = memberPhone;
 		this.memberEmail = memberEmail;
 		this.memberAddress = memberAddress;
 		this.memberInterest = memberInterest;
+		
 	}
+
 
 	public int getMemberNo() {
 		return memberNo;
@@ -170,7 +175,7 @@ public class Member {
 	public void setMemberGrade(String memberGrade) {
 		this.memberGrade = memberGrade;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
@@ -178,5 +183,4 @@ public class Member {
 				+ memberAddress + ", memberInterest=" + memberInterest + ", memberEnrollDate=" + memberEnrollDate
 				+ ", memberStatus=" + memberStatus + ", memberGrade=" + memberGrade + "]";
 	}
-	
 }

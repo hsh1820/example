@@ -20,9 +20,9 @@
 			<%@ include file="sideMenu.jsp"%>
 
 			<div class="col-sm-offset-2 col-sm-8">
-				<h3>비밀번호 변경</h3>
+				<h3>회원 탈퇴</h3>
 				<div class="bg-white rounded shadow-sm container p-3">
-					<form method="POST" action="updateMember.do" onsubmit="return validate();" 
+					<form method="POST" action="deleteMember.do" onsubmit="return validate();" 
 						class="form-horizontal" role="form">
 						<!-- 아이디 -->
 						<div class="row mb-3 form-row">
@@ -30,7 +30,7 @@
 								<h6>아이디</h6>
 							</div>
 							<div class="col-md-6">
-								<h5 id="id">세션 아이디</h5>
+								<h5 id="id"><%=loginMember.getMemberId() %></h5>
 							</div>
 						</div>
 
@@ -40,7 +40,7 @@
 								<h6>비밀번호</h6>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" id="currentPwd"
+								<input type="password" class="form-control" id="currentPwd"
 									name="currentPwd">
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 									<div class="checkbox pull-right">
 										<div class="custom-checkbox">
 											<div class="form-check">
-												<input type="checkbox" name="memberInterest" id="agree"
+												<input type="checkbox" name="agree" id="agree"
 													class="form-check-input custom-control-input"> <br>
 												<label class="form-check-label custom-control-label"
 													for="agree">위 약관에 동의합니다.</label>
@@ -102,7 +102,17 @@
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
-	
+		
+		function validate(){
+			if( !$("#agree").prop("checked") ){
+				// true / false 반환
+				alert("약관에 동의해주세요.");	
+				return false;
+			}else{
+				return confirm("정말 탈퇴 하시겠습니까?");
+				// true / false 반환
+			}
+		}
 	</script>
 
 </body>

@@ -1,38 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	// header.jsp 에서 Member가 import 되어있기 때문에 현재 페이지에서 import 불필요
+	// header.jsp에서 Member가 import 되어 있기 때문에 현재 페이지에서 import 불필요
 	Member member = (Member)request.getAttribute("member");
-
 	
-	// ={"010", "1234", "1234"}
 	String[] phone = member.getMemberPhone().split("-");
+	// "-"를 구분자로 하여 쪼개어 배열에 저장
+	
 	String[] address = {"-","-","-"};
-	/* if(member.getMemberAddress() != null){
-		address = member.getMemberAddress().split(",");
-	} */
-	if( !member.getMemberAddress().equals(",,")){
+	
+	if(!member.getMemberAddress().equals(",,")){
 		address = member.getMemberAddress().split(",");
 	}
 	
-	// 관심분야
+	// 관심 분야
 	String[] checked = new String[6];
+	
 	if(member.getMemberInterest() != null){
-		// null 인 값을 split시 nullpoint exception 발생
-		String[] interests = member.getMemberInterest().split(", "); 
+		String[] interests = member.getMemberInterest().split(",");
 		
-		for(int i =0; i<interests.length;i++){
+		for(int i=0; i<interests.length; i++){
 			switch(interests[i]){
-			case "운동" : checked[0] = "checked";break; 
-			case "영화" : checked[1] = "checked";break; 
-			case "음악" : checked[2] = "checked";break; 
-			case "요리" : checked[3] = "checked";break; 
-			case "게임" : checked[4] = "checked";break; 
-			case "기타" : checked[5] = "checked";break; 
+			case "운동" : checked[0] = "checked"; break;
+			case "영화" : checked[1] = "checked"; break;
+			case "음악" : checked[2] = "checked"; break;
+			case "요리" : checked[3] = "checked"; break;
+			case "게임" : checked[4] = "checked"; break;
+			case "기타" : checked[5] = "checked"; break;
 			}
 		}
 	}
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -47,9 +44,7 @@
 		margin: 0;
 	}
 </style>
-
 </head>
-
 <body>
 	<div class="container">
 		<%@ include file="../common/header.jsp"%>
@@ -69,7 +64,7 @@
 								<h6>아이디</h6>
 							</div>
 							<div class="col-md-6">
-								<h5 id="id"><%= member.getMemberId() %></h5>
+								<h5 id="id"><%=member.getMemberId() %></h5>
 							</div>
 						</div>
 	
@@ -100,16 +95,13 @@
 							</div>
 							
 							<script>
-								$.each($("#phone1>option"),function(index, item){
-								/* $.each(배열이나 객체, function(){} ); 
-									item : 현재 접근하고 있는 요소
-										요소 자체가 들어가있음 <option>010</option>
-										option : input태그가 아니므로 값에 접근(수정.조회)할 때 
-												 .val()이 아니라 .text()를 사용함 
-								*/
-								if($(item).text() == "<%=phone[0]%>"){
-									$(item).prop("selected", true);
-								}
+								/* phone1의 자식들 option */
+								$.each($("#phone1>option"), function(index, item){
+									
+									if( $(item).text() == "<%=phone[0]%>" ){
+										$(item).prop("selected",true);
+										// selected속성을 추가하겠다
+									}
 									
 								});
 							</script>
@@ -132,7 +124,7 @@
 								<label for="memberEmail">Email</label>
 							</div>
 							<div class="col-md-6">
-								<input type="email" class="form-control" id="email" name="email" value="<%=member.getMemberEmail() %>">
+								<input type="email" class="form-control" id="email" name="email" value="<%= member.getMemberEmail()%>">
 							</div>
 						</div>
 						<br>
@@ -188,43 +180,42 @@
 							<div class="col-md-9 custom-control custom-checkbox">
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="sports"
-										value="운동" class="form-check-input custom-control-input" <%=checked[0]%>>
+										value="운동" class="form-check-input custom-control-input" <%=checked[0] %>>
 									<label class="form-check-label custom-control-label"
 										for="sports">운동</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="movie"
-										value="영화" class="form-check-input custom-control-input" <%=checked[1]%>>
+										value="영화" class="form-check-input custom-control-input" <%=checked[1] %>>
 									<label class="form-check-label custom-control-label" for="movie">영화</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="music"
-										value="음악" class="form-check-input custom-control-input" <%=checked[2]%>>
+										value="음악" class="form-check-input custom-control-input" <%=checked[2] %>>
 									<label class="form-check-label custom-control-label" for="music">음악</label>
 								</div>
 								<br>
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="cooking"
-										value="요리" class="form-check-input custom-control-input"<%=checked[3]%>>
+										value="요리" class="form-check-input custom-control-input" <%=checked[3] %>>
 									<label class="form-check-label custom-control-label"
 										for="cooking">요리</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="game"
-										value="게임" class="form-check-input custom-control-input" <%=checked[4]%> >
+										value="게임" class="form-check-input custom-control-input" <%=checked[4] %>>
 									<label class="form-check-label custom-control-label" for="game">게임</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input type="checkbox" name="memberInterest" id="etc"
-										value="기타" class="form-check-input custom-control-input" <%=checked[5]%> > 
+										value="기타" class="form-check-input custom-control-input" <%=checked[5] %>> 
 									<label class="form-check-label custom-control-label" for="etc">기타</label>
 								</div>
 							</div>
 						</div>
 	
 						<hr class="mb-4">
-						<button class="btn btn-primary btn-lg btn-block" type="submit" href="<%= request.getContextPath() %>/member/updateMember.do">수정</button>
-
+						<button class="btn btn-primary btn-lg btn-block" type="submit">수정</button>
 					</form>
 				</div>
 			</div>

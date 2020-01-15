@@ -20,7 +20,7 @@ public class SignUpServlet extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
 		
 		String memberId = request.getParameter("id");
 		String memberPwd = request.getParameter("pwd1");
@@ -36,7 +36,8 @@ public class SignUpServlet extends HttpServlet {
 		
 		Member member = new Member(memberId, memberPwd, memberName, memberPhone, memberEmail,
 				memberAddress, memberInterest);
-				
+		
+		System.out.println("signup : "+ member);
 		
 		try {
 			int result = new MemberService().joinMember(member);
