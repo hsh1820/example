@@ -74,59 +74,20 @@
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="book_btn d-none d-lg-block" >
-                                        <a id="modal-1207" href="#modal-container-1207" role="button"
-                                            class="genric-btn danger radius" data-toggle="modal">로그인</a>
-                                        <div class="modal fade" id="modal-container-1207" role="dialog"
-                                            aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="myModalLabel">Login</h5>
-                                                        <button type="button" class="close" data-dismiss="modal">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form class="form-signin" method="POST" action="<%= request.getContextPath()%>/member/login.do"
-                                                        onsubmit="return loginValidate();">
-                                                        <!-- form태그 내부에서 submit 이벤트가 발생했을 때 loginValidate() 실행, 
-                                                                  결과가 false가 나오면 return false가 되므로 갱신이벤트가 사라짐(페이지가 안 넘어감)-->
-                                                            <input type="text" class="form-control" id="memberId" name="memberId"
-                                                                placeholder="ID" value=""> <br> 
-                                                            <input type="password" class="form-control" id="memberPwd" name="memberPwd"
-                                                                placeholder="password"> 
-                                                                <br>
-                                                                <div class="col-lg-3 col-md-4 mt-sm-30">
-                                                                <div class="switch-wrap d-flex justify-content-between">
-                                                                    <div class="primary-checkbox">
-                                                                        <input type="checkbox" id="default-checkbox">
-                                                                        <label for="default-checkbox"></label>
-                                                                    </div>
-                                                                    <h4>save id</h4>
-                                                                </div></div>
-                                                                <br><br>
-                                                            <!-- <button class="book_btn d-none d-lg-block" type="submit">Login</button> -->
-                                                            <a class="book_btn d-none d-lg-block text-center"  href="login_suc.html">Login</a> 
-                                                            <div class="padding-login"></div>
-                                                            <a class="book_btn d-none d-lg-block text-center" href="signUpForm.html">Join us</a> 
-                                                            <div class="padding-login"></div>
-                                                            <a class="book_btn d-none d-lg-block text-center"  href="<%=request.getContextPath() %>/member/signUpForm.do">find ID / password</a>
-                                                            <br>
-                                                        </form>
-                                                    </divc>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <img src="img/case/testmonial.png" alt=""> &nbsp;&nbsp;
+                                    <div class="book_btn">
+                                        <a href="#" style="padding: 10px;">mypage</a>
+                                    </div>&nbsp;
+                                    <div class="alert"></div>
+                                    <div class="book_btn">
+                                        <a href="#" style="padding: 10px;">쪽지</a>
+                                    </div>&nbsp;
+                                    <div class="book_btn">
+                                        <a href="#" style="padding: 10px;">logout</a>
+                                    </div>&nbsp;
                                 </div>
-                            </div>
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
