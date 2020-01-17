@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
 
+.back-trans {
+  background-color: rgba(0, 0, 0, 0);
+}
 .alert {
   border-radius: 10px;
   position: absolute
@@ -929,7 +932,7 @@ h3 {
 .header-area .main-header-area {
   padding: 18px 0;
   background: #0f2137;
-  padding: 25px 150px;
+  padding: 10px 150px;
 }
 
 /* line 20, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
@@ -1072,10 +1075,6 @@ h3 {
   color: #fff;
 }
 
-/* line 104, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
-.header-area .main-header-area .Appointment .book_btn {
-  margin-left: 30px;
-}
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 104, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
