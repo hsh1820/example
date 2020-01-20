@@ -15,8 +15,26 @@ public class Notice {
 	public Notice() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+	public Notice( String noticeTitle, String noticeContent, String noticeWriter) {
+		super();
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeWriter = noticeWriter;
+	}
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, int noticeCount,
+			Date noticeModifyDate) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeWriter = noticeWriter;
+		this.noticeCount = noticeCount;
+		this.noticeModifyDate = noticeModifyDate;
+	}
+
+
 
 	public Notice(int noticeNo, String noticeTitle, String noticeWriter, int noticeCount, Date noticeModifyDate) {
 		super();
@@ -40,6 +58,13 @@ public class Notice {
 		this.noticeCreateDate = noticeCreateDate;
 		this.noticeModifyDate = noticeModifyDate;
 		this.noticeStatus = noticeStatus;
+	}
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
 	}
 
 	public int getNoticeNo() {

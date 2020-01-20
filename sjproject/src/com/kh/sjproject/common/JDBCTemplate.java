@@ -11,9 +11,10 @@ import java.util.Properties;
 
 public class JDBCTemplate {
 	private static Connection conn = null;
-	public static Connection getConnection() {
-		if(conn == null) {
+	public static Connection getConnection()  {
 			try {
+				if(conn == null || conn.isClosed()) {
+					// 싱글턴 패턴 포기
 				Properties prop = new Properties();
 				// 배포용 경로 설정 방법
 				String fileName 
@@ -33,22 +34,24 @@ public class JDBCTemplate {
 				// WebContent/WEB-INF/lib 폴더에 추가 
 				//	웹 배포시 같이 배포되어야하기 때문
 				
-				try {
-					Class.forName(prop.getProperty("driver"));
-					conn = DriverManager.getConnection(
-							prop.getProperty("url"),
-							prop.getProperty("user"),
-							prop.getProperty("password"));
-					
-					conn.setAutoCommit(false);
-					
-				}catch(Exception e) {
-					e.printStackTrace();
+							try {
+								Class.forName(prop.getProperty("driver"));
+								conn = DriverManager.getConnection(
+										prop.getProperty("url"),
+										prop.getProperty("user"),
+										prop.getProperty("password"));
+								
+								conn.setAutoCommit(false);
+								
+							}catch (Exception e) {
+								e.printStackTrace();
+							} 
+				
 				}
-			}catch(IOException e) {
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		
 		return conn;
 	}
 	

@@ -63,7 +63,7 @@
 	        <hr>
 	        <%-- 로그인된 계정이 관리자 등급인 경우에만 글쓰기 버튼 노출 --%>
 	        <%if(loginMember != null && loginMember.getMemberGrade().equals("A")){ %>
-	        <button type="button" class="btn btn-primary float-right">글쓰기</button>
+	        <button type="button" class="btn btn-primary float-right" onclick="location.href='insertForm';">글쓰기</button>
 	        <%} %>
 	        <div style="clear: both;">
 	            <ul class="pagination">
@@ -106,6 +106,22 @@
 	</div>
 	
 	<script>
+		// 공지사항 상세조회 기능 
+		$(function(){
+			$("#list-table td").on("click",function(){
+				var noticeNo = $(this).parent().children().eq(0).text();
+				// tr 아래 td들이 배열로 반환됨
+				// td들 중 0번째 인덱스의 text만 얻어옴
+				
+				// 쿼리스트링을 이용하여 GET방식으로 글번호를 server로 전달
+				// get방식일때 주소 뒤에 붙는 요소들
+				location.href="<%= request.getContextPath()%>/notice/detail?no="+ noticeNo;
+						// ? : get방식으로 전달되는 파라미터들을 넣을 수 있음
+				
+			}).on("mouseenter",function(){
+				$(this).parent().css("cursor","pointer");
+			});
+		});
 	</script>
 	
 	

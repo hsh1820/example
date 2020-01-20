@@ -3,6 +3,7 @@ package com.kh.sjproject.notice.model.dao;
 import static com.kh.sjproject.common.JDBCTemplate.*;
 import java.io.FileReader;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -60,6 +61,153 @@ public class NoticeDao {
 		}
 		
 		return list;
+	}
+
+	public Notice selectNotice(Connection conn, int no) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Notice notice = null;
+		
+		String query = prop.getProperty("selectNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				notice = new Notice(no, 
+							rset.getString("NOTICE_TITLE"),
+							rset.getString("NOTICE_CONTENT"),
+							rset.getString("NOTICE_WRITER"),
+							rset.getInt("NOTICE_COUNT"),
+							rset.getDate("NOTICE_MODIFY_DT"));
+			}
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return notice;
+	}
+
+	/**공지사항 조회수 증가용 Dao
+	 * @param conn
+	 * @param no
+	 * @return result
+	 * @throws Exception
+	 */
+	public int increaseCount(Connection conn, int no) throws Exception {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		String query = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 공지사항 등록용 Dao
+	 * @param conn
+	 * @param notice
+	 * @param no
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertNotice(Connection conn, Notice notice, int no)throws Exception {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		String query = prop.getProperty("insertNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, no);
+			pstmt.setString(2, notice.getNoticeTitle());
+			pstmt.setString(3, notice.getNoticeContent());
+			pstmt.setString(4, notice.getNoticeWriter());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/**공지사항 글번호 생성용 Dao
+	 * @param conn
+	 * @return no
+	 * @throws Exception
+	 */
+	public int selectNextNo(Connection conn)  throws Exception{
+		Statement stmt = null;
+		ResultSet rset = null;
+		int no = 0;
+		
+		String query = prop.getProperty("selectNextNo");
+		
+		try{
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				no = rset.getInt(1);
+			}
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+		return no;
+	}
+
+	public int updateNotice(Connection conn, Notice notice) throws Exception{
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, notice.getNoticeTitle());
+			pstmt.setString(2, notice.getNoticeContent());
+			pstmt.setInt(3, notice.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteNotice(Connection conn, int no) throws Exception{
+		PreparedStatement pstmt =null;
+		int result = 0;
+		String query = prop.getProperty("deleteNotice");
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, no);
+			
+			result=pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+		}
+				
+		return result;
 	}
 
 }
