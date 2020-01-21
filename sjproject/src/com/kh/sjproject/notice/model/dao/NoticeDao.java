@@ -210,4 +210,40 @@ public class NoticeDao {
 		return result;
 	}
 
+	/**공지사항 검색용 Dao
+	 * @param conn
+	 * @param condition
+	 * @return list
+	 * @throws Exception
+	 */
+	public List<Notice> searchNotice(Connection conn, String condition) throws Exception{
+		Statement stmt = null;
+		ResultSet rset = null;
+		List<Notice> list = null;
+		
+		String query1 = prop.getProperty("searchNotice1");
+		String query2 = prop.getProperty("searchNotice2");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query1+condition+query2);
+			list = new ArrayList<Notice>();
+			
+			Notice notice = null;
+			
+			while(rset.next()) {
+				notice = new Notice(rset.getInt("NOTICE_NO"),
+									rset.getString("NOTICE_TITLE"), 
+									rset.getString("NOTICE_WRITER"),
+									rset.getInt("NOTICE_COUNT"),
+									rset.getDate("NOTICE_MODIFY_DT"));
+				
+				list.add(notice);
+			}
+		}finally {
+			close(rset);
+			close(stmt);
+		}
+		return list;
+	}
 }

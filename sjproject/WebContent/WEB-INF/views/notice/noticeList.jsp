@@ -4,6 +4,9 @@
 
 <%
 	List<Notice> list = (List<Notice>)request.getAttribute("list"); 
+	
+	String searchKey = request.getParameter("searchKey");
+	String searchValue = request.getParameter("searchValue");
 %>
 <!DOCTYPE html>
 <html>
@@ -91,15 +94,37 @@
 	            </ul>
 	        </div>
 	        <div>
-	            <form class="text-center" id="searchForm">
-	                <select class="form-control" style="width:100px; display: inline-block;">
-	                    <option selected>글제목</option>
-	                    <option>내용</option>
-	                    <option>제목+내용</option>
+	            <form method= "GET" action="search" class="text-center" id="searchForm">
+	                <select name="searchKey"class="form-control" style="width:100px; display: inline-block;">
+	                    <option value="title">글제목</option>
+	                    <option value="content">내용</option>
+	                    <option value="titcont">제목+내용</option>
 	                </select>
-	                <input type="text" class="form-control" style="width:25%; display: inline-block;">
+	                <input type="text" name="searchValue"class="form-control" style="width:25%; display: inline-block;">
 	                <button class="form-control btn btn-primary" style="width:100px; display: inline-block;">검색</button>
 	            </form>
+	            
+	            <script>
+					$(function(){
+						var searchKey = "<%= searchKey%>";
+						/* java의 String 값을 jquery에서도 String으로 사용하기 위해서는 "" 리터럴로 문자라고 표시필요" */
+						var searchValue = "<%= searchValue%>";
+						
+						if(searchKey != "null" && searchValue != "null"){
+							// 검색한 경우
+							
+							$.each($("select[name=searchKey] > option"), function(index, item){
+								if($(item).val() == searchKey){
+									//$(item) : 현재 접근 요소
+									$(item).prop("selected", true);									
+								}
+							});
+							
+							$("input[name=searchValue]").val(searchValue);
+						}
+						
+					});            	
+	            </script>
 	        </div>
     	</div>
 		<%@ include file="../common/footer.jsp"%>

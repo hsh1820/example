@@ -128,5 +128,31 @@ public class NoticeService {
 		
 		return result;
 	}
+
+	/**공지사항 검색용  Service
+	 * @param searchKey
+	 * @param searchValue
+	 * @return list
+	 * @throws Exception 
+	 */
+	public List<Notice> searchNotice(String searchKey, String searchValue) throws Exception{
+		Connection conn = getConnection();
+		
+		String condition = null;
+		
+		searchValue = "'%' || '"+ searchValue + "' || '%'";
+				// like '%공지%'
+		
+		switch (searchKey) {
+			case "title": condition = " NOTICE_TITLE LIKE " + searchValue; break;
+			case "content": condition = " NOTICE_CONTENT LIKE " + searchValue; break;
+			case "titcont": condition = " (NOTICE_TITLE LIKE " + searchValue + "OR NOTICE_CONTENT LIKE " + searchValue +")"; break;
+		}
+		
+		List<Notice> list = new NoticeDao().searchNotice(conn, condition);
+		close(conn);
+		
+		return list;
+	}
 	
 }

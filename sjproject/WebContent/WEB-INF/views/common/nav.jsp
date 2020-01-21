@@ -13,7 +13,7 @@
          															 <!-- list.do는 예전방식 -->
         </li>
         <li class="nav-item col-md text-center">
-          <a class="nav-link" href="#">게시판</a>
+          <a class="nav-link" href="<%=request.getContextPath()%>/board/list">게시판</a>
         </li>
         <li class="nav-item col-md text-center">
           <a class="nav-link" href="#">Q & A</a>

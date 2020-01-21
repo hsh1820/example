@@ -199,6 +199,29 @@ public class NoticeController extends HttpServlet {
 			}
 		}
 		
+		// 공지사항 검색용 Controller
+		else if(command.equals("/search")) {
+			String searchKey = request.getParameter("searchKey");
+			String searchValue = request.getParameter("searchValue");
+			
+			try {
+				List<Notice> list = noticeService.searchNotice(searchKey,searchValue);
+				
+				path = "/WEB-INF/views/notice/noticeList.jsp";
+				request.setAttribute("list", list);
+				
+				view = request.getRequestDispatcher(path);
+				view.forward(request, response);
+				
+			}catch (Exception e) {
+				ExceptionForward.errorPage(request, response, "공지사항 검색", e);
+			}
+			
+			
+			
+			
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
