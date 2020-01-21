@@ -28,6 +28,26 @@
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <style>
+        .back-white{
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .btn-hei, .btn-hei:hover {
+            height: 80px;
+            margin-bottom: 50px;
+            background-color: #001d38;
+            border: 0px  ;
+            color: white;
+        }
+
+        .btn-hei-line{
+            height: 45px;
+            line-height: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +58,7 @@
     <!-- header-start -->
     <header>
         <div class="header-area">
-            <div id="sticky-header" class="main-header-area">
+            <div id="sticky-header" class="main-header-area " style="padding: 0;">
                 <div class="container-fluid ">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
@@ -78,7 +98,7 @@
                                 <div class="Appointment">
                                     <div class="book_btn d-none d-lg-block" >
                                         <a id="modal-1207" href="#modal-container-1207" role="button"
-                                            class="genric-btn danger radius" data-toggle="modal">로그인</a>
+                                            class="genric-btn danger radius btn-hei-line" data-toggle="modal">로그인</a>
                                         <div class="modal fade" id="modal-container-1207" role="dialog"
                                             aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -150,7 +170,7 @@
                             <p></p>
                             <h3></h3>
                             <div class="explorer_europe">
-                                <div class="container back-ground-white">
+                                <div class="container back-white">
                                     <div class="explorer_wrap ">
                                         <div class="row align-items-center">
                                             <div class="col-xl-6 col-md-4">
@@ -160,7 +180,7 @@
                                                 <div class="explorer_tab">
                                                     <nav>
                                                         <div class="nav" id="nav-tab" role="tablist">
-                                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                                            <a class="nav-item nav-link  active" id="nav-home-tab" data-toggle="tab"
                                                                 href="#nav-home" role="tab" aria-controls="nav-home"
                                                                 aria-selected="true">Freelancer</a>
                                                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
@@ -177,12 +197,12 @@
                                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-success btn-block"  id="header-tab-btn">
+                                                    <button type="button" class="btn btn-block btn-hei"  id="header-tab-btn">
                                                         Freelancer 찾기
                                                     </button>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-success btn-block" id="header-tab-btn">
+                                                    <button type="button" class="btn btn-block btn-hei" id="header-tab-btn">
                                                         Freelancer 쓰기
                                                     </button>
                                                 </div>
@@ -192,13 +212,13 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                      
-                                                    <button type="button" class="btn btn-success btn-block"  id="header-tab-btn">
+                                                    <button type="button" class="btn btn-block btn-hei"  id="header-tab-btn">
                                                         Client 찾기
                                                     </button>
                                                 </div>
                                                 <div class="col-md-6">
                                                      
-                                                    <button type="button" class="btn btn-success btn-block"  id="header-tab-btn">
+                                                    <button type="button" class="btn btn-block btn-hei"  id="header-tab-btn">
                                                         Client 쓰기
                                                     </button>
                                                 </div>
