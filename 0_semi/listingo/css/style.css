@@ -6554,7 +6554,7 @@ h6 {
 .genric-btn.primary:hover {
   color: #ff5e13;
   border: 1px solid #ff5e13;
-  background: #fff;
+  /* background: #fff; */
 }
 
 /* line 227, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_elements.scss */
@@ -7673,7 +7673,7 @@ h6 {
 
 /* line 10, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_blog.scss */
 .blog_area a {
-  color: #666666 !important;
+  color: #666666 ;
   text-decoration: none;
   -webkit-transition: 0.5s;
   transition: 0.5s;
