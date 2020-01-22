@@ -1,5 +1,60 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,600,600i,700|Shadows+Into+Light&display=swap");
+
+.back-trans {
+  background-color: rgba(0, 0, 0, 0);
+}
+.alert {
+  border-radius: 10px;
+  position: absolute
+  
+}
+.wid-hei{
+  width: 50px;
+  height: 30px;
+}
+.none-line{
+  text-decoration: none;
+}
+.header-padding{
+  /* height : 250px; */
+}
+#modal-1207 {
+  z-index: 999999;
+}
+.padding-login {
+  padding: 3px ;
+}
+.position-rela{
+  position: relative;
+}
+
+.height_testmonial {
+  height: 400px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+}
+
+.back-ground-white{
+  background-color: white;
+  border-radius: 5px;
+  padding-bottom: 30px;
+}
+.display-non {
+  display: none;
+}
+.tab-content {
+  height : 80px;
+}
+#header-tab-btn {
+  height: 80px;
+  background-color:#0f2137;
+  border: 1px solid #0f2137;
+}
+
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_extend.scss */
 .flex-center-start {
   display: -webkit-box;
@@ -883,8 +938,8 @@ h3 {
 /* line 16, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .main-header-area {
   padding: 18px 0;
-  background: lightgray;
-  padding: 25px 50px;
+  background: #0f2137;
+  padding: 10px 150px;
 }
 
 /* line 20, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
@@ -929,7 +984,7 @@ h3 {
 @media (min-width: 1200px) and (max-width: 1500px) {
   /* line 16, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
   .header-area .main-header-area {
-    padding: 20px 20px;
+    padding: 10px 20px;
   }
 }
 
@@ -1027,10 +1082,6 @@ h3 {
   color: #fff;
 }
 
-/* line 104, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
-.header-area .main-header-area .Appointment .book_btn {
-  margin-left: 30px;
-}
 
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 104, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
@@ -1051,7 +1102,6 @@ h3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#F91842+0,fd8e5e+100 */
   background: #F91842;
   font-family: "Raleway", sans-serif;
-  padding: 15px 40px;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid transparent;
@@ -1077,7 +1127,7 @@ h3 {
 /* line 133, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu {
   text-align: center;
-  padding: 12px 0;
+  padding: 0px 0;
 }
 
 /* line 137, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
@@ -1256,8 +1306,8 @@ h3 {
   content: "";
   background: #F91842;
   width: 100%;
-  height: 3px;
-  bottom: -27px;
+  height: 2px;
+  bottom: -10px;
   left: 0;
   opacity: 0;
   transform: scaleX(0);
@@ -1266,6 +1316,24 @@ h3 {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+
+
+.add_underline{
+  position: absolute;
+  content: "";
+  background: #F91842;
+  width: 100%;
+  height: 2px;
+  bottom: -10px;
+  left: 0;
+  opacity: 0;
+  transform: scaleX(0);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
 
 /* line 309, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_header.scss */
 .header-area .header-top_area {
@@ -1368,7 +1436,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  /* background-image: url(../img/banner/banner.png); */
 }
 
 /* line 4, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_slider.scss */
@@ -1403,7 +1471,7 @@ h3 {
 
 /* line 25, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_slider.scss */
 .slider_area .single_slider {
-  height: 900px;
+  height: 800px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1411,7 +1479,7 @@ h3 {
 
 /* line 30, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_slider.scss */
 .slider_area .single_slider.single_listing {
-  height: 500px;
+  height: 400px;
 }
 
 @media (max-width: 767px) {
@@ -3212,8 +3280,8 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_popular_catagory.scss */
 .popular_catagory_area {
-  padding-top: 150px;
-  padding-bottom: 120px;
+  padding-top: 120px;
+  padding-bottom: 0px;
 }
 
 @media (max-width: 767px) {
@@ -4254,7 +4322,7 @@ p #amount {
 
 /* line 1, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_explorer.scss */
 .explorer_europe {
-  padding-bottom: 120px;
+  padding-bottom: 0px;
 }
 
 @media (max-width: 767px) {
@@ -4462,7 +4530,6 @@ p #amount {
 
 /* line 148, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_explorer.scss */
 .explorer_europe .single_explorer {
-  margin-bottom: 30px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -4511,15 +4578,15 @@ p #amount {
 
 /* line 175, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_explorer.scss */
 .explorer_europe .single_explorer .explorer_bottom .icon {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   background: #00D363;
   color: #fff;
   text-align: center;
-  line-height: 50px;
+  line-height: 30px;
 }
 
 /* line 183, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_explorer.scss */
@@ -6545,7 +6612,7 @@ h6 {
 
 /* line 217, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_elements.scss */
 .genric-btn.primary {
-  color: #fff;
+  color: rgb(34, 20, 20);
   background: #ff5e13;
   border: 1px solid transparent;
 }
@@ -6554,7 +6621,6 @@ h6 {
 .genric-btn.primary:hover {
   color: #ff5e13;
   border: 1px solid #ff5e13;
-  /* background: #fff; */
 }
 
 /* line 227, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_elements.scss */
@@ -7521,9 +7587,8 @@ h6 {
 
 /* line 1001, ../../Arafath/CL/Cl November/222. Directory/HTML/scss/_elements.scss */
 .default-select .nice-select {
-  border: none;
-  border-radius: 0px;
-  height: 40px;
+  border-radius: 3px;
+  height: 48px;
   background: #f9f9ff;
   padding-left: 20px;
   padding-right: 40px;
