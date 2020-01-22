@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.kh.sjproject.board.model.vo.Attachment;
 import com.kh.sjproject.board.model.vo.Board;
 
 
@@ -107,4 +108,96 @@ private Properties prop = null;
 		return bList;
 	}
 
+
+
+
+	/** 다음 게시글 번호 반환용 Dao
+	 * @param conn
+	 * @return boardNo
+	 * @throws Exception
+	 */
+	public int selectNextNo(Connection conn) throws Exception{
+		Statement stmt = null;
+		ResultSet rset = null;
+		int boardNo = 0;
+		
+		String query = prop.getProperty("selectNextNo");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			
+			if(rset.next()) {
+				boardNo = rset.getInt(1);
+			}
+			
+		}finally {
+			close(rset);
+			close(stmt);
+			
+		}
+				
+		return boardNo;
+	}
+
+
+
+
+	/** 게시글 등록용 Dao
+	 * @param conn
+	 * @param board
+	 * @param boardWriter
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertBoard(Connection conn, Board board, int boardWriter) throws Exception{
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, board.getBoardNo());
+			pstmt.setString(2, board.getBoardTitle());
+			pstmt.setString(3, board.getBoardContent());
+			pstmt.setInt(4, boardWriter);
+			pstmt.setString(5, board.getBoardCategory());
+			pstmt.setInt(6, 1);
+			
+			result = pstmt.executeUpdate();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+
+	/** 게시글 파일(이미지)정보 삽입용 Dao
+	 * @param conn
+	 * @param file
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertAttachment(Connection conn, Attachment file) throws Exception{
+		PreparedStatement pstmt =null;
+		int result = 0;
+		String query = prop.getProperty("insertAttachment");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, file.getBoardId());
+			pstmt.setString(2, file.getFileOriginName());
+			pstmt.setString(3, file.getFileChangeName());
+			pstmt.setString(4, file.getFilePath());
+			pstmt.setInt(5, file.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

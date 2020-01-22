@@ -61,7 +61,10 @@
 							<tr>
 								<td><%= board.getBoardNo() %></td>
 								<td><%= board.getBoardCategory() %></td>
-								<td><%= board.getBoardTitle() %></td>
+								<td class="boardTitle">
+									<!-- img(썸네일)추가 -->
+									<%= board.getBoardTitle() %>
+								</td>
 								<td><%= board.getBoardWriter() %></td>
 								<td><%= board.getBoardCount() %></td>
 								<td><%= board.getBoardModifyDate() %></td>
