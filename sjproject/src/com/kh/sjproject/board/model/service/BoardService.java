@@ -10,6 +10,9 @@ import java.util.List;
 import com.kh.sjproject.board.model.dao.BoardDao;
 import com.kh.sjproject.board.model.vo.Attachment;
 import com.kh.sjproject.board.model.vo.Board;
+import com.kh.sjproject.board.model.vo.Reply;
+
+import oracle.net.aso.b;
 
 public class BoardService {
 
@@ -121,5 +124,116 @@ public class BoardService {
 		
 		return fList;
 	}
+
+	
+	/** 게시글 상세 조회용 Service
+	 * @param boardNo
+	 * @return board
+	 * @throws Exception
+	 */
+	public Board selectBoard(int boardNo) throws Exception{
+		Connection conn = getConnection();
+		
+		BoardDao boardDao = new BoardDao();
+		
+		// 1) 게시글 상세 조회 
+		Board board = new BoardDao().selectBoard(conn,boardNo);
+		
+		// 2) 게시글 상세 조회 성공 시 조회수 증가
+		if(board != null) {
+			int result = boardDao.increaseCount(conn, boardNo);
+			
+			if(result>0) {
+				commit(conn);
+				//반환되는 notice는 조회수 증가가 되어있지 않으므로 
+				// 리턴 시 조회수를 +1 시켜줌
+				board.setBoardCount(board.getBoardCount()+1);
+				
+			}else {
+				rollback(conn);
+				board = null; // 조회수 증가 실패 시 조회되지 않게 만듦.
+			}
+		}
+		
+		close(conn);
+		return board;
+	}
+
+	/** 게시글 이미지 파일 조회용 Service
+	 * @param boardNo
+	 * @return files
+	 * @throws Exception
+	 */
+	public List<Attachment> selectFiles(int boardNo) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Attachment> files = new BoardDao().selectFiles(conn, boardNo);
+		
+		close(conn);
+		
+		
+		return files;
+	}
+	
+	/** 파일 다운로드용 Service
+	 * @param fNo
+	 * @return file
+	 */
+	public Attachment selectFile(int fNo) throws Exception {
+		Connection conn = getConnection();
+		BoardDao boardDao = new BoardDao();
+		
+		Attachment file = new BoardDao().selectFile(conn, fNo);
+		
+		if(file != null) {
+			int result = boardDao.increaseDownCount(conn, fNo);
+			
+			if(result>0) {
+				commit(conn);
+				//반환되는 notice는 조회수 증가가 되어있지 않으므로 
+				// 리턴 시 조회수를 +1 시켜줌
+				file.setFileDownloadCount(file.getFileDownloadCount()+1);
+				
+			}else {
+				rollback(conn);
+				file = null; // 조회수 증가 실패 시 조회되지 않게 만듦.
+			}
+		}
+		close(conn);
+		return file;
+	}
+
+	/** 댓글 등록용 Service
+	 * @param reply
+	 * @param replyWriter
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertReply(Reply reply, int replyWriter) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertReply(conn, reply, replyWriter);
+		
+		if(result > 0 ) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
+
+	/** 댓글 리스트 조회용 Service
+	 * @param boardId
+	 * @return rList
+	 * @throws Exception
+	 */
+	public List<Reply> selectReplyList(int boardId) throws Exception {
+		Connection conn = getConnection();
+		List<Reply> rList = new BoardDao().selectReplyList(conn, boardId);
+		
+		close(conn);
+		
+		return rList;
+	}
+
 
 }

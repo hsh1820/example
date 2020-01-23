@@ -16,6 +16,19 @@ public class Attachment {
 	public Attachment() {}
 
 	public Attachment(int fileNo, int boardId, String fileOriginName, String fileChangeName, String filePath,
+			Date fileUploadDate, int fileLevel, int fileDownloadCount) {
+		super();
+		this.fileNo = fileNo;
+		BoardId = boardId;
+		this.fileOriginName = fileOriginName;
+		this.fileChangeName = fileChangeName;
+		this.filePath = filePath;
+		this.fileUploadDate = fileUploadDate;
+		this.fileLevel = fileLevel;
+		this.fileDownloadCount = fileDownloadCount;
+	}
+
+	public Attachment(int fileNo, int boardId, String fileOriginName, String fileChangeName, String filePath,
 			Date fileUploadDate, int fileLevel, int fileDownloadCount, String fileStatus) {
 		super();
 		this.fileNo = fileNo;
@@ -27,6 +40,17 @@ public class Attachment {
 		this.fileLevel = fileLevel;
 		this.fileDownloadCount = fileDownloadCount;
 		this.fileStatus = fileStatus;
+	}
+
+	
+
+
+
+	public Attachment(String fileOriginName, String fileChangeName, String filePath) {
+		super();
+		this.fileOriginName = fileOriginName;
+		this.fileChangeName = fileChangeName;
+		this.filePath = filePath;
 	}
 
 	public int getFileNo() {

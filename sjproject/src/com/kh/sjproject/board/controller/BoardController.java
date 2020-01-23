@@ -1,5 +1,8 @@
 package com.kh.sjproject.board.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -7,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kh.sjproject.board.model.service.BoardService;
 import com.kh.sjproject.board.model.vo.Attachment;
 import com.kh.sjproject.board.model.vo.Board;
 import com.kh.sjproject.board.model.vo.PageInfo;
+import com.kh.sjproject.board.model.vo.Reply;
 import com.kh.sjproject.common.ExceptionForward;
 import com.kh.sjproject.common.MyFileRenamePolicy;
 import com.kh.sjproject.member.model.vo.Member;
@@ -96,6 +103,7 @@ public class BoardController extends HttpServlet {
 			path = "/WEB-INF/views/board/boardList.jsp";
 			request.setAttribute("bList", bList);
 			request.setAttribute("pInf", pInf);
+			request.setAttribute("fList", fList);
 			
 			view = request.getRequestDispatcher(path);
 			view.forward(request, response);
@@ -215,7 +223,7 @@ public class BoardController extends HttpServlet {
 						 
 						 // 썸네일 이미지는 fileLevel을 0으로 
 						 // 나머지 이미지에는 fileLevel을 1부여
-						 if(i == originFiles.size()-1) {
+						 if((i == originFiles.size()-1) && multiRequest.getFilesystemName("img1") != null) {
 							 file.setFileLevel(0);
 							 
 						 }else {
@@ -237,8 +245,153 @@ public class BoardController extends HttpServlet {
 				ExceptionForward.errorPage(request, response, "게시글 등록", e);
 			}
 		}
+		// 게시글 상세조회 Controller
+		else if(command.equals("/detail")) {
+			// forward(request, response) 할 것 이기 때문에 따로 getparameter를 꺼낼 필요 없이 재사용
+			int boardNo = Integer.parseInt(request.getParameter("no"));
+			
+			try {
+				Board board = boardService.selectBoard(boardNo);
+				if(board != null) {
+					
+					List<Attachment> files = boardService.selectFiles(boardNo);
+					
+					if(!files.isEmpty()) {
+						request.setAttribute("files", files);
+					}
+					
+					path = "/WEB-INF/views/board/boardDetail.jsp";
+					request.setAttribute("board", board);
+					view = request.getRequestDispatcher(path);
+					view.forward(request, response);
+				}else {
+					request.getSession().setAttribute("msg", "게시글 상세 조회 실패");
+					response.sendRedirect("list");
+				}
+				
+			}catch (Exception e) {
+				ExceptionForward.errorPage(request, response, "게시글 상세 조회", e);
+			}
+			
+		}
 		
+		// 이미지 다운로드용 Controller
+				else if(command.equals("/download")) {
+					int fNo = Integer.parseInt(request.getParameter("fNo"));
+					
+					try {
+						Attachment file = new BoardService().selectFile(fNo);
+						
+						if(file != null) {
+							
+							// 클라이언트로  파일을 내보낼 출력 스트림 연결(Servlet 기본 제공 클래스)
+							ServletOutputStream downOut = response.getOutputStream();
+							// getOutputStream : 
+							// 웹상으로 파일을 내보내는 출력 스트림--> 서블릿에서 기본적으로 제공 
+							// ServletOutputStream 클래스의 getOutputStream()메소드
+							
+							// 스트림을 통해 내보낼 파일 객체 생성
+							// File 객체를 통하여 해당 파일에 접근 가능
+							File downloadFile = new File(file.getFilePath() + file.getFileChangeName());
+							// getFileChangeName() : response.getOutputStream()로 가져온 file이기 때문에 이미 변환된 파일 이름 으로 접근해야함
+							// response에서 가져오는 이유 : 게시글 상세 페이지 화면은 response로 보내준 화면이기때문
+							
+							// 폴더에서 파일을 읽을 스트림 생성
+							// 파일을 바이트 단위로 읽어들여 버퍼에 담아 스트림을 통해 내보냄
+							BufferedInputStream bis = new BufferedInputStream(new FileInputStream(downloadFile));
+							// byte 기반 스트림 == 모든 파일 형식을 다룰 수 있음
+							
+							// 파일명을 changeName이 아닌 originName으로 다운받을 수 있도록 처리
+							/*
+							 * Content-Disposition 
+							 * - 파일 다운로드를 처리하는 HTTP 헤더
+							 * - 웹 서버 응답에 이 헤더를 포함하면 해당 파일 데이터를 다운로드 받도록 설정할 수 있음. 
+							 *
+							 * attachment; 
+							 * - 파일을 다운로드 받을 수 있게 해주는 속성
+							 * - 없으면 실행이 안됨
+							 *  
+							 * filename="파일명"
+							 * - 다운로드를 받는 사용자에게 보여질 파일명 
+							 * 
+							 * ISO-8859-1 
+							 * - 크롬 기본 문자셋
+							 * */
+							response.setHeader("Content-Disposition", "attachment; filename=\"" 
+									+ new String(file.getFileOriginName().getBytes("UTF-8"), "ISO-8859-1") + "\"");
+							// 파일명 문자 인코딩 변환
+							// originName의 문자 인코딩 : UTF-8
+							// 웹 브라우저에서 다운로드시 파일명 문자 인코딩 : ISO-8859-1
+
+
+							// 스트림을 통해 내보낼 파일의 크기 지정
+							response.setContentLength((int)downloadFile.length());
+							
+							int readBytes = 0;
+							while((readBytes = bis.read()) != -1) {
+								// 더이상 읽을 파일이 없을 때 
+								downOut.write(readBytes);
+								// 한번에 write()
+							}
+							
+							// 사용 스트림 반환
+							bis.close();
+							downOut.close();
+							// 위 동작이 끝나는 순간부터 화면에 출력되기 시작
+							// 화면이동 필요 없으니 sendredirect / forward 없음
+						}
+					
+					}catch (Exception e) {
+						ExceptionForward.errorPage(request, response, "이미지 다운로드", e);
+					}
+				}
 		
+		// 댓글 등록용 Controller
+				else if(command.equals("/insertReply")) {
+					// ajax에서 넘겨준 파라미터들을 받는것 
+					int replyWriter = Integer.parseInt(request.getParameter("writer"));
+					int boardId = Integer.parseInt(request.getParameter("boardNo"));
+					String replyContent = request.getParameter("content");
+					
+					// 댓글 한번에 저장하고 관리할 reply VO 추가
+					Reply reply = new Reply(replyContent, boardId);
+					// replyWriter 는 String
+					
+					try {
+						int result = boardService.insertReply(reply, replyWriter);
+						
+						// ajax사용시 한 페이지 내부에서 사용하는 것이기 때문에 페이지를 넘기는 것을 잘 안씀
+						if(result > 0) {
+							// getWriter 문자를 내보낼 수 있는 스트림
+							// print 문자를 출력 메소드
+							response.getWriter().print(result);
+							
+							
+						}else {
+							
+						}
+						
+					}catch (Exception e) {
+						ExceptionForward.errorPage(request, response, "댓글 등록", e);
+					}
+				}
+		
+		// 댓글 리스트 출력용 Controller
+				else if(command.contentEquals("/selectReplyList")) {
+					int boardId = Integer.parseInt(request.getParameter("boardNo"));
+					
+					try {
+						List<Reply> rList = boardService.selectReplyList(boardId);
+						response.setCharacterEncoding("UTF-8");
+						
+						Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+						
+						gson.toJson(rList, response.getWriter());
+					}catch (Exception e) {
+						ExceptionForward.errorPage(request, response, "댓글 조회", e);
+					} 
+					
+				}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

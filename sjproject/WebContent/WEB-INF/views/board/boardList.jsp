@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.kh.sjproject.board.model.vo.Attachment"%>
 <%@page import="java.util.List, com.kh.sjproject.board.model.vo.Board, com.kh.sjproject.board.model.vo.PageInfo"%>
 	
 <% 
 	List<Board> bList = (List<Board>)request.getAttribute("bList");
+	List<Attachment> fList = (List<Attachment>)request.getAttribute("fList");
 	PageInfo pInf = (PageInfo)request.getAttribute("pInf");
 	String searchKey = request.getParameter("searchKey");
 	String searchValue = request.getParameter("searchValue");
@@ -13,6 +15,7 @@
 	int maxPage = pInf.getMaxPage();
 	int startPage = pInf.getStartPage();
 	int endPage = pInf.getEndPage();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -29,6 +32,11 @@
 
         #searchForm>*{
             top : 0;
+        }
+        
+        .boardTitle > img{
+        	width: 50px;
+        	height: 50px;
         }
 	</style>
 	
@@ -63,6 +71,16 @@
 								<td><%= board.getBoardCategory() %></td>
 								<td class="boardTitle">
 									<!-- img(썸네일)추가 -->
+									<%
+										String src = request.getContextPath()+"/resources/uploadImages/noimage.png";
+										for(Attachment file : fList){
+											if(file.getBoardId() == board.getBoardNo()){
+												src = request.getContextPath()+"/resources/uploadImages/"+ file.getFileChangeName();
+											}
+										}
+									%>
+									
+									<img src="<%=src%>">
 									<%= board.getBoardTitle() %>
 								</td>
 								<td><%= board.getBoardWriter() %></td>
@@ -165,7 +183,7 @@
 			$("#list-table td").click(function(){
 				var boardNo = $(this).parent().children().eq(0).text();
 				// 쿼리스트링을 이용하여 get 방식으로 글 번호를 server로 전달
-				location.href="<%= request.getContextPath() %>/board/detail?no="+boardNo;
+				location.href="<%= request.getContextPath() %>/board/detail?no="+boardNo+"&currentPage="+ <%=currentPage%>;
 			
 			}).mouseenter(function(){
 				$(this).parent().css("cursor", "pointer");
