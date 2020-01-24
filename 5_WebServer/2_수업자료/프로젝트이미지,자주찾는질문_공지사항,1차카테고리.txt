@@ -1,0 +1,40 @@
+----------------------------------------------------
+------------- ATTACHMENT 관련   --------------   
+----------------------------------------------------
+DROP TABLE CATEGORY1;
+
+CREATE TABLE CATEGORY1 (
+   CATEGORY1_CODE   CHAR(1) PRIMARY KEY,
+   CATEGORY1_NAME   VARCHAR2(50)   NOT NULL   
+);
+
+----------------------------------------------------
+------------- PROJECT_RESOURCE 관련   --------------   
+----------------------------------------------------
+DROP TABLE PROJECT_RESOURCE;
+DROP SEQUENCE SEQ_PJ_RESOURCE_NO;
+
+CREATE TABLE PROJECT_RESOURCE (
+   PROJECT_RESOURCE_NO   NUMBER PRIMARY KEY,
+   PROJECT_RESOURCE_PATH   VARCHAR2(1000)   NOT NULL,
+   PROJECT_RESOURCE_DELETE_YN   CHAR(1) DEFAULT 'N' CHECK (PROJECT_RESOURCE_DELETE_YN IN ('Y','N'))  NOT NULL,
+   PROJECT_NO   NUMBER REFERENCES PROJECT(PROJECT_NO)  NOT NULL
+);
+
+CREATE SEQUENCE SEQ_PJ_RESOURCE_NO;
+----------------------------------------------------
+------------- NOTICE 관련   --------------   
+----------------------------------------------------
+DROP TABLE NOTICE;
+DROP SEQUENCE SEQ_NNO;
+
+CREATE TABLE NOTICE (
+   NOTICE_NO   NUMBER  PRIMARY KEY,
+   NOTICE_CONTENT   VARCHAR2(200)      NOT NULL,
+   NOTICE_CREATE_DT   DATE      NOT NULL,
+   NOTICE_DELETE_YN   CHAR(1)   DEFAULT N CHECK(NOTICE_DELETE_YN IN('Y','N'))  NOT NULL,
+   NOTICE_CODE   NUMBER   DEFAULT 1  CHECK(NOTICE_CODE IN (1,2)) NOT NULL,
+   NOTICE_COUNT   NUMBER      NOT NULL
+);
+
+CREATE SEQUENCE SEQ_NNO;
