@@ -114,7 +114,18 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>*.js</url-pattern>
+			    <url-pattern>*.css</url-pattern>
+			    <url-pattern>*.jpg</url-pattern>
+			    <url-pattern>*.gif</url-pattern>
+			    <url-pattern>*.png</url-pattern>
+			    <url-pattern>*.ico</url-pattern>
+			    <url-pattern>*.swf</url-pattern>
+    </servlet-mapping>
+    
   <!-- The JSP page compiler and execution servlet, which is the mechanism  -->
   <!-- used by Tomcat to support JSP pages.  Traditionally, this servlet    -->
   <!-- is mapped to the URL pattern "*.jsp".  This servlet supports the     -->
