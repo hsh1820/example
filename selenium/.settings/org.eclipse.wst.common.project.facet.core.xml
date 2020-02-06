@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="Semi-loginTestServer"/>
-  <fixed facet="wst.jsdt.web"/>
+  <runtime name="selenium server"/>
   <fixed facet="java"/>
+  <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>
   <installed facet="java" version="1.8"/>
   <installed facet="jst.web" version="3.1"/>
